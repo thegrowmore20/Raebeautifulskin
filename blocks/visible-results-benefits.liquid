@@ -3,17 +3,24 @@
 
 <div class="vrb-grid" {{ block.shopify_attributes }}>
   {%- for key in benefit_keys -%}
-    {%- assign title_key = key | append: '_title' -%}
-    {%- assign desc_key  = key | append: '_desc'  -%}
-    {%- assign icon_key  = key | append: '_icon'  -%}
+    {%- assign title_key     = key | append: '_title'     -%}
+    {%- assign desc_key      = key | append: '_desc'      -%}
+    {%- assign icon_key      = key | append: '_icon'      -%}
+    {%- assign img_key       = key | append: '_img'       -%}
+    {%- assign img_width_key = key | append: '_img_width' -%}
     <div class="vrb-item">
       <div class="vrb-top-row">
         <div class="vrb-badge">0{{ forloop.index }}</div>
-        {%- unless block.settings[icon_key] == 'none' -%}
+        {%- if block.settings[img_key] != blank -%}
+          {%- assign img_w = block.settings[img_width_key] -%}
+          <div class="vrb-icon" style="--vrb-img-w:{{ img_w }}px">
+            {{- block.settings[img_key] | image_url: width: 120 | image_tag: loading: 'lazy' -}}
+          </div>
+        {%- elsif block.settings[icon_key] != 'none' -%}
           <div class="vrb-icon">
             {%- render 'icon-or-image', icon: block.settings[icon_key], width: 22 -%}
           </div>
-        {%- endunless -%}
+        {%- endif -%}
       </div>
       <div class="vrb-line"></div>
       <p class="vrb-title">{{ block.settings[title_key] }}</p>
@@ -74,10 +81,16 @@
 
 /* Icon next to badge */
 .vrb-icon {
-  opacity: 0.2;
+  opacity: 0.3;
   display: flex;
   align-items: center;
   flex-shrink: 0;
+}
+.vrb-icon img {
+  display: block;
+  width: var(--vrb-img-w, 28px);
+  height: auto;
+  max-width: none;
 }
 
 /* Short teal divider */
@@ -192,8 +205,13 @@
   "name": "Benefits Grid",
   "settings": [
     { "type": "header", "content": "Benefit 1" },
+    { "type": "image_picker", "id": "b1_img", "label": "Custom image / icon" },
     {
-      "type": "select", "id": "b1_icon", "label": "Icon", "default": "eye",
+      "type": "range", "id": "b1_img_width", "label": "Image width (px)",
+      "min": 16, "max": 60, "step": 2, "default": 28, "unit": "px"
+    },
+    {
+      "type": "select", "id": "b1_icon", "label": "Fallback icon (when no image set)", "default": "eye",
       "options": [
         { "value": "none", "label": "None" }, { "value": "eye", "label": "Eye" },
         { "value": "heart", "label": "Heart" }, { "value": "leaf", "label": "Leaf" },
@@ -206,8 +224,13 @@
     { "type": "textarea", "id": "b1_desc",  "label": "Description", "default": "Visibly softens expression lines for a smoother-looking complexion." },
 
     { "type": "header", "content": "Benefit 2" },
+    { "type": "image_picker", "id": "b2_img", "label": "Custom image / icon" },
     {
-      "type": "select", "id": "b2_icon", "label": "Icon", "default": "leaf",
+      "type": "range", "id": "b2_img_width", "label": "Image width (px)",
+      "min": 16, "max": 60, "step": 2, "default": 28, "unit": "px"
+    },
+    {
+      "type": "select", "id": "b2_icon", "label": "Fallback icon (when no image set)", "default": "leaf",
       "options": [
         { "value": "none", "label": "None" }, { "value": "eye", "label": "Eye" },
         { "value": "heart", "label": "Heart" }, { "value": "leaf", "label": "Leaf" },
@@ -220,8 +243,13 @@
     { "type": "textarea", "id": "b2_desc",  "label": "Description", "default": "Firmer, more structured-looking skin from within." },
 
     { "type": "header", "content": "Benefit 3" },
+    { "type": "image_picker", "id": "b3_img", "label": "Custom image / icon" },
     {
-      "type": "select", "id": "b3_icon", "label": "Icon", "default": "silhouette",
+      "type": "range", "id": "b3_img_width", "label": "Image width (px)",
+      "min": 16, "max": 60, "step": 2, "default": 28, "unit": "px"
+    },
+    {
+      "type": "select", "id": "b3_icon", "label": "Fallback icon (when no image set)", "default": "silhouette",
       "options": [
         { "value": "none", "label": "None" }, { "value": "eye", "label": "Eye" },
         { "value": "heart", "label": "Heart" }, { "value": "leaf", "label": "Leaf" },
@@ -234,8 +262,13 @@
     { "type": "textarea", "id": "b3_desc",  "label": "Description", "default": "Refined, touchably smooth surface with better bounce." },
 
     { "type": "header", "content": "Benefit 4" },
+    { "type": "image_picker", "id": "b4_img", "label": "Custom image / icon" },
     {
-      "type": "select", "id": "b4_icon", "label": "Icon", "default": "star",
+      "type": "range", "id": "b4_img_width", "label": "Image width (px)",
+      "min": 16, "max": 60, "step": 2, "default": 28, "unit": "px"
+    },
+    {
+      "type": "select", "id": "b4_icon", "label": "Fallback icon (when no image set)", "default": "star",
       "options": [
         { "value": "none", "label": "None" }, { "value": "eye", "label": "Eye" },
         { "value": "heart", "label": "Heart" }, { "value": "leaf", "label": "Leaf" },
@@ -248,8 +281,13 @@
     { "type": "textarea", "id": "b4_desc",  "label": "Description", "default": "Fades dullness for skin that looks lit from within." },
 
     { "type": "header", "content": "Benefit 5" },
+    { "type": "image_picker", "id": "b5_img", "label": "Custom image / icon" },
     {
-      "type": "select", "id": "b5_icon", "label": "Icon", "default": "heart",
+      "type": "range", "id": "b5_img_width", "label": "Image width (px)",
+      "min": 16, "max": 60, "step": 2, "default": 28, "unit": "px"
+    },
+    {
+      "type": "select", "id": "b5_icon", "label": "Fallback icon (when no image set)", "default": "heart",
       "options": [
         { "value": "none", "label": "None" }, { "value": "eye", "label": "Eye" },
         { "value": "heart", "label": "Heart" }, { "value": "leaf", "label": "Leaf" },

@@ -2760,18 +2760,28 @@
           "type": "visible-results-benefits",
           "name": "Benefits Grid",
           "settings": {
+            "b1_img": "shopify://shop_images/LAst_sectiom_icon-01.svg",
+            "b1_img_width": 50,
             "b1_icon": "eye",
             "b1_title": "Reduces Wrinkles & Fine Lines",
             "b1_desc": "Visibly softens expression lines for a smoother-looking complexion.",
+            "b2_img": "shopify://shop_images/LAst_sectiom_icon-02.svg",
+            "b2_img_width": 50,
             "b2_icon": "leaf",
             "b2_title": "Supports Collagen Activity",
             "b2_desc": "Firmer, more structured-looking skin from within.",
+            "b3_img": "shopify://shop_images/LAst_sectiom_icon-03.svg",
+            "b3_img_width": 50,
             "b3_icon": "silhouette",
             "b3_title": "Improves Texture & Elasticity",
             "b3_desc": "Refined, touchably smooth surface with better bounce.",
+            "b4_img": "shopify://shop_images/LAst_sectiom_icon-04.svg",
+            "b4_img_width": 50,
             "b4_icon": "star",
             "b4_title": "Restores Even Complexion",
             "b4_desc": "Fades dullness for skin that looks lit from within.",
+            "b5_img": "shopify://shop_images/LAst_sectiom_icon-05.svg",
+            "b5_img_width": 50,
             "b5_icon": "heart",
             "b5_title": "Younger-Looking Skin",
             "b5_desc": "Complete formula for refreshed, renewed, radiant skin."
@@ -3009,7 +3019,7 @@
                 "custom_class": "",
                 "content_direction": "row",
                 "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
+                "horizontal_alignment": "center",
                 "vertical_alignment": "center",
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
@@ -3018,7 +3028,7 @@
                 "content_direction_mobile": "default",
                 "horizontal_alignment_mobile": "default",
                 "vertical_alignment_mobile": "default",
-                "width": "custom",
+                "width": "fill",
                 "custom_width": 50,
                 "width_mobile": "fill",
                 "custom_width_mobile": 100,
@@ -3062,7 +3072,7 @@
                     "content_direction_mobile": "default",
                     "horizontal_alignment_mobile": "default",
                     "vertical_alignment_mobile": "default",
-                    "width": "fill",
+                    "width": "fit-content",
                     "custom_width": 100,
                     "width_mobile": "fill",
                     "custom_width_mobile": 100,
@@ -3084,10 +3094,10 @@
                     "link": "",
                     "open_in_new_tab": false,
                     "placeholder": "",
-                    "padding-block-start": 15,
-                    "padding-block-end": 15,
-                    "padding-inline-start": 15,
-                    "padding-inline-end": 15
+                    "padding-block-start": 10,
+                    "padding-block-end": 10,
+                    "padding-inline-start": 30,
+                    "padding-inline-end": 30
                   },
                   "blocks": {
                     "text_bYBdGM": {
@@ -3138,7 +3148,7 @@
                     "content_direction_mobile": "default",
                     "horizontal_alignment_mobile": "default",
                     "vertical_alignment_mobile": "default",
-                    "width": "fill",
+                    "width": "fit-content",
                     "custom_width": 100,
                     "width_mobile": "fill",
                     "custom_width_mobile": 100,
@@ -3160,10 +3170,10 @@
                     "link": "",
                     "open_in_new_tab": false,
                     "placeholder": "",
-                    "padding-block-start": 15,
-                    "padding-block-end": 15,
-                    "padding-inline-start": 15,
-                    "padding-inline-end": 15
+                    "padding-block-start": 10,
+                    "padding-block-end": 10,
+                    "padding-inline-start": 30,
+                    "padding-inline-end": 30
                   },
                   "blocks": {
                     "text_rXbUWT": {
@@ -3214,7 +3224,7 @@
                     "content_direction_mobile": "default",
                     "horizontal_alignment_mobile": "default",
                     "vertical_alignment_mobile": "default",
-                    "width": "fill",
+                    "width": "fit-content",
                     "custom_width": 100,
                     "width_mobile": "fill",
                     "custom_width_mobile": 100,
@@ -3236,10 +3246,10 @@
                     "link": "",
                     "open_in_new_tab": false,
                     "placeholder": "",
-                    "padding-block-start": 15,
-                    "padding-block-end": 15,
-                    "padding-inline-start": 15,
-                    "padding-inline-end": 15
+                    "padding-block-start": 10,
+                    "padding-block-end": 10,
+                    "padding-inline-start": 30,
+                    "padding-inline-end": 30
                   },
                   "blocks": {
                     "text_krKaPx": {
