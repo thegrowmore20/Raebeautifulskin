@@ -1,0 +1,271 @@
+
+{%- assign benefit_keys = 'b1,b2,b3,b4,b5' | split: ',' -%}
+
+<div class="vrb-grid" {{ block.shopify_attributes }}>
+  {%- for key in benefit_keys -%}
+    {%- assign title_key = key | append: '_title' -%}
+    {%- assign desc_key  = key | append: '_desc'  -%}
+    {%- assign icon_key  = key | append: '_icon'  -%}
+    <div class="vrb-item">
+      <div class="vrb-top-row">
+        <div class="vrb-badge">0{{ forloop.index }}</div>
+        {%- unless block.settings[icon_key] == 'none' -%}
+          <div class="vrb-icon">
+            {%- render 'icon-or-image', icon: block.settings[icon_key], width: 22 -%}
+          </div>
+        {%- endunless -%}
+      </div>
+      <div class="vrb-line"></div>
+      <p class="vrb-title">{{ block.settings[title_key] }}</p>
+      <p class="vrb-desc">{{ block.settings[desc_key] }}</p>
+    </div>
+  {%- endfor -%}
+</div>
+
+{% stylesheet %}
+/* Grid container */
+.vrb-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+/* Each column */
+.vrb-item {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px 20px;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.vrb-item:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Badge + icon row */
+.vrb-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Numbered circle */
+.vrb-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #377e99;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Icon next to badge */
+.vrb-icon {
+  opacity: 0.2;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Short teal divider */
+.vrb-line {
+  width: 28px;
+  height: 2px;
+  background: #377e99;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.vrb-title {
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.35;
+  font-size: 0.875rem;
+}
+
+.vrb-desc {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  opacity: 0.7;
+}
+
+/* ── iPad / Tablet (768–999px): row 1 = 3 cols, row 2 = 2 cols (50% each) ── */
+@media screen and (max-width: 999px) and (min-width: 768px) {
+  .vrb-grid {
+    flex-wrap: wrap;
+  }
+  /* Row 1: items 1-3 at 33.333% */
+  .vrb-item {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+    padding: 24px 18px;
+    gap: 10px;
+  }
+  /* Row 2: items 4 & 5 at 50% each */
+  .vrb-item:nth-child(4),
+  .vrb-item:nth-child(5) {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  /* Reset all desktop right borders */
+  .vrb-item:not(:last-child) {
+    border-right: none;
+  }
+  /* Row 1 right borders: items 1 & 2 (not 3rd) */
+  .vrb-item:nth-child(1),
+  .vrb-item:nth-child(2) {
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  /* Row 2 right border: item 4 only */
+  .vrb-item:nth-child(4) {
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  /* Bottom border under row 1 */
+  .vrb-item:nth-child(-n+3) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  /* Last item: no borders */
+  .vrb-item:last-child {
+    border-right: none;
+    border-bottom: none;
+  }
+}
+
+/* ── Mobile (≤767px): 2-per-row, last item full width ── */
+@media screen and (max-width: 767px) {
+  .vrb-grid {
+    flex-wrap: wrap;
+  }
+  .vrb-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  /* Reset desktop right borders, re-apply only col-1 of each row */
+  .vrb-item:not(:last-child) {
+    border-right: none;
+  }
+  .vrb-item:nth-child(odd):not(:last-child) {
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  /* Bottom border under rows 1 & 2 (first 4 items) */
+  .vrb-item:nth-child(-n+4) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  /* Last (5th) item spans full width */
+  .vrb-item:last-child {
+    flex: 0 0 100%;
+    max-width: 100%;
+    border-right: none;
+    border-bottom: none;
+  }
+}
+
+/* ── Small mobile (≤479px): single column ── */
+@media screen and (max-width: 479px) {
+  .vrb-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+    border-right: none !important;
+  }
+  .vrb-item:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Benefits Grid",
+  "settings": [
+    { "type": "header", "content": "Benefit 1" },
+    {
+      "type": "select", "id": "b1_icon", "label": "Icon", "default": "eye",
+      "options": [
+        { "value": "none", "label": "None" }, { "value": "eye", "label": "Eye" },
+        { "value": "heart", "label": "Heart" }, { "value": "leaf", "label": "Leaf" },
+        { "value": "star", "label": "Star" }, { "value": "silhouette", "label": "Silhouette" },
+        { "value": "lipstick", "label": "Lipstick" }, { "value": "plant", "label": "Plant" },
+        { "value": "perfume", "label": "Perfume" }, { "value": "check_box", "label": "Check" }
+      ]
+    },
+    { "type": "text",     "id": "b1_title", "label": "Title",       "default": "Reduces Wrinkles & Fine Lines" },
+    { "type": "textarea", "id": "b1_desc",  "label": "Description", "default": "Visibly softens expression lines for a smoother-looking complexion." },
+
+    { "type": "header", "content": "Benefit 2" },
+    {
+      "type": "select", "id": "b2_icon", "label": "Icon", "default": "leaf",
+      "options": [
+        { "value": "none", "label": "None" }, { "value": "eye", "label": "Eye" },
+        { "value": "heart", "label": "Heart" }, { "value": "leaf", "label": "Leaf" },
+        { "value": "star", "label": "Star" }, { "value": "silhouette", "label": "Silhouette" },
+        { "value": "lipstick", "label": "Lipstick" }, { "value": "plant", "label": "Plant" },
+        { "value": "perfume", "label": "Perfume" }, { "value": "check_box", "label": "Check" }
+      ]
+    },
+    { "type": "text",     "id": "b2_title", "label": "Title",       "default": "Supports Collagen Activity" },
+    { "type": "textarea", "id": "b2_desc",  "label": "Description", "default": "Firmer, more structured-looking skin from within." },
+
+    { "type": "header", "content": "Benefit 3" },
+    {
+      "type": "select", "id": "b3_icon", "label": "Icon", "default": "silhouette",
+      "options": [
+        { "value": "none", "label": "None" }, { "value": "eye", "label": "Eye" },
+        { "value": "heart", "label": "Heart" }, { "value": "leaf", "label": "Leaf" },
+        { "value": "star", "label": "Star" }, { "value": "silhouette", "label": "Silhouette" },
+        { "value": "lipstick", "label": "Lipstick" }, { "value": "plant", "label": "Plant" },
+        { "value": "perfume", "label": "Perfume" }, { "value": "check_box", "label": "Check" }
+      ]
+    },
+    { "type": "text",     "id": "b3_title", "label": "Title",       "default": "Improves Texture & Elasticity" },
+    { "type": "textarea", "id": "b3_desc",  "label": "Description", "default": "Refined, touchably smooth surface with better bounce." },
+
+    { "type": "header", "content": "Benefit 4" },
+    {
+      "type": "select", "id": "b4_icon", "label": "Icon", "default": "star",
+      "options": [
+        { "value": "none", "label": "None" }, { "value": "eye", "label": "Eye" },
+        { "value": "heart", "label": "Heart" }, { "value": "leaf", "label": "Leaf" },
+        { "value": "star", "label": "Star" }, { "value": "silhouette", "label": "Silhouette" },
+        { "value": "lipstick", "label": "Lipstick" }, { "value": "plant", "label": "Plant" },
+        { "value": "perfume", "label": "Perfume" }, { "value": "check_box", "label": "Check" }
+      ]
+    },
+    { "type": "text",     "id": "b4_title", "label": "Title",       "default": "Restores Even Complexion" },
+    { "type": "textarea", "id": "b4_desc",  "label": "Description", "default": "Fades dullness for skin that looks lit from within." },
+
+    { "type": "header", "content": "Benefit 5" },
+    {
+      "type": "select", "id": "b5_icon", "label": "Icon", "default": "heart",
+      "options": [
+        { "value": "none", "label": "None" }, { "value": "eye", "label": "Eye" },
+        { "value": "heart", "label": "Heart" }, { "value": "leaf", "label": "Leaf" },
+        { "value": "star", "label": "Star" }, { "value": "silhouette", "label": "Silhouette" },
+        { "value": "lipstick", "label": "Lipstick" }, { "value": "plant", "label": "Plant" },
+        { "value": "perfume", "label": "Perfume" }, { "value": "check_box", "label": "Check" }
+      ]
+    },
+    { "type": "text",     "id": "b5_title", "label": "Title",       "default": "Younger-Looking Skin" },
+    { "type": "textarea", "id": "b5_desc",  "label": "Description", "default": "Complete formula for refreshed, renewed, radiant skin." }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Grid",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

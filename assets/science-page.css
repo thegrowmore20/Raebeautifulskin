@@ -1,8 +1,21 @@
-@media screen and (max-width: 1199px) {
-    .visible-results-section .section-content-wrapper {
-        flex-flow: column nowrap;
-    }
-    .visible-results-section .group-block--width-custom.size-style {
-        width: 100%;
-    }
+/* ── Visible Results Section ─────────────────────────────────────────────── */
+
+/* Two-tone heading: "Your Skin Can Feel" in teal via <em> (no inline styles needed) */
+.visible-results-section h2 em {
+  color: #377e99;
+  font-style: normal;
+}
+
+/* Teal CTA button */
+.visible-results-section .button-block a,
+.visible-results-section .button-block button {
+  background-color: #377e99;
+  border-color: #377e99;
+  color: #ffffff;
+}
+.visible-results-section .button-block a:hover,
+.visible-results-section .button-block button:hover {
+  background-color: #2d6a80;
+  border-color: #2d6a80;
+  color: #ffffff;
 }
