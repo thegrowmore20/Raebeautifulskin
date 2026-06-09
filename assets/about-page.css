@@ -1,0 +1,4 @@
+.our-mission img,
+.our-vision img {
+    filter: invert(1);
+}

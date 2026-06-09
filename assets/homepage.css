@@ -1,0 +1,91 @@
+@media (max-width: 768px) {
+    .spacing-style.text-block.rae-science-subheading.text-block--full-width,
+    .spacing-style.text-block.rae-science-subheading.text-block--full-width h3,
+    .spacing-style.text-block.rae-science-subheading.text-block--full-width ~ .spacing-style.text-block h2,
+    .spacing-style.text-block.rae-science-subheading.text-block--full-width ~ .divider .divider__line,
+    .spacing-style.text-block.rae-science-subheading.text-block--full-width ~ rte-formatter p {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto
+    }   
+    .spacing-style.text-block.rae-science-subheading.text-block--full-width+.eyebrow-block .eye-brow-wrapper {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto
+    } 
+    .list-feature-items .custom-section-content .section-content-wrapper {
+        gap: 10px;
+    }
+    .list-feature-items .brand-value-text {
+        font-size: 14px;
+    }
+    .list-feature-items .brand-value-heading h3 {
+        font-size: 18px;
+        letter-spacing: -0.4px;
+    }
+    .list-feature-items .custom-section-content > .mobile-column {
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    .group-block--width-fill.list-feature-item {
+        flex: 0 1 47%;
+        flex: 0 1 calc(50% - 10px * 2 / 3);
+    }
+    .list-feature-items .divider {
+        display: none;
+    }
+    .patents-header-group {
+        width: 100%;
+        padding-bottom: 0;
+    }
+    .rae-science-image-text .eyebrow-block {
+        width: 70%;
+        max-width: 175px;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width:768px){ 
+    .rae-science-image-text .custom-section-content .section-content-wrapper.mobile-column.order-reverse {
+        flex-direction: column-reverse !important;
+    }
+    .influencer-community .custom-section-content .section-content-wrapper.mobile-column {
+        flex-direction: column !important;
+    }
+    .rae-science-icon-columns {
+        width: 100%
+    }
+}
+@media screen and (max-width:480px){
+     .anti-aging-text-para > * {
+      font-size: 14px !important;
+  }
+
+  .anti-aging-text-heading > * {
+    font-size: 18px !important;
+  }
+}
+@media screen and (max-width:480px){
+
+    .protect-flag-column .icon-block__media{
+        width : 50px !important;
+    }
+    .header-banner-content-inner h1 {
+        font-size: 32px;
+    }
+
+    .header-banner-content-inner .banner-inner-para {
+        font-size: 14px;
+        --padding-block-end: 3px !important;
+    }
+    .patents-multicolumn .patents-multicolumn-inner {
+        --padding-inline-start: 15px !important;
+        --padding-inline-end: 15px !important;
+    }
+
+}

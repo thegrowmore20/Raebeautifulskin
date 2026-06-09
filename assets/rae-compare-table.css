@@ -1,0 +1,464 @@
+/* ─── Tokens ─────────────────────────────────── */
+:root {
+	--teal:        #2e7d7b;
+	--teal-hdr:    #265f5e;   /* slightly darker for header row */
+	--teal-cell:   #e8f4f3;   /* RAE body column bg */
+	--check-bg:    #377e99;
+	--cross-bg:    #d0d0d0;
+	--cross-fg:    #767676;
+	--text-dark:   #1c2e2d;
+	--text-mid:    #3d5554;
+	--text-body:   #3a3a3a;
+	--text-muted:  #7a9898;
+	--border:      #e0eaea;
+	--row-alt:     #f6fafa;
+	--radius:      8px;
+}
+
+/* ─── Wrapper ─────────────────────────────────── */
+.cmp-wrap {
+	max-width: 100%;
+	margin: 0 auto;
+	border-radius: var(--radius);
+	/* overflow: hidden;           clips the thead rounded corners */
+	border: 1px solid var(--border);
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+
+
+/* ─── Table ───────────────────────────────────── */
+.cmp-table {
+	width: 100%;
+	border-collapse: separate;
+	table-layout: fixed;
+	border-spacing: 0;
+}
+
+/* column widths — matches reference proportions */
+.col-lbl { width: 19%; }
+.col-rae { width: 21%; }
+.col-alt { width: 20%; }
+
+/* ══════════════════════════════════════════════
+THEAD
+══════════════════════════════════════════════ */
+.cmp-table thead tr th {
+	background: var(--check-bg);
+}
+
+.cmp-table thead th {
+	padding: 1rem .85rem;
+	vertical-align: middle;
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0;
+	color: rgba(255,255,255,.75);
+	text-align: center;
+	border-right: 1px solid rgba(255,255,255,.12);
+}
+
+.cmp-table thead th:last-child { 
+	border-right: none !important;
+	border-top-right-radius: var(--radius)
+}
+
+/* "Comparison Point" header */
+.th-lbl {
+	font-size: .75rem;
+	color: #fff;
+	font-weight: 700;
+	border-top-left-radius: var(--radius);
+}
+
+/* RAE header — slightly darker teal pill effect via bg */
+.cmp-table .th-rae {
+	background: var(--check-bg);
+	color: #fff !important;
+	text-align: center;
+	position: relative;
+	border-right: 1px solid var(--check-bg);
+	border-right: 1px solid hsla(196, 65%, 75%, 1);
+	background: hsla(197, 47%, 41%, 1);
+	background: linear-gradient(45deg, hsla(197, 47%, 41%, 1) 0%, hsla(196, 65%, 75%, 1) 100%);
+	background: -moz-linear-gradient(45deg, hsla(197, 47%, 41%, 1) 0%, hsla(196, 65%, 75%, 1) 100%);
+	background: -webkit-linear-gradient(45deg, hsla(197, 47%, 41%, 1) 0%, hsla(196, 65%, 75%, 1) 100%);
+	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#377E99", endColorstr="#97D3E9", GradientType=1 );
+	transform: scaleY(1.2);
+	transform-origin: bottom;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.cmp-table tbody tr:last-child td.td-rae {
+	position: relative;
+}
+.cmp-table tbody tr:last-child td.td-lbl {
+	border-bottom-left-radius: var(--radius);
+}
+.cmp-table tbody tr:last-child td:last-child {
+	border-bottom-right-radius: var(--radius);
+}
+.th-rae::before {
+	content: unset;
+	width: 100%;
+	height: 8px;
+	background: var(--check-bg);
+	display: block;
+	position: absolute;
+	top: -8px;
+	left: 0;
+	border-radius: 8px 8px 0 0;
+	background: hsla(197, 47%, 41%, 1);
+	background: linear-gradient(45deg, hsla(197, 47%, 41%, 1) 0%, hsla(196, 65%, 75%, 1) 100%);
+	background: -moz-linear-gradient(45deg, hsla(197, 47%, 41%, 1) 0%, hsla(196, 65%, 75%, 1) 100%);
+	background: -webkit-linear-gradient(45deg, hsla(197, 47%, 41%, 1) 0%, hsla(196, 65%, 75%, 1) 100%);
+	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#377E99", endColorstr="#97D3E9", GradientType=1 );
+}
+.cmp-table tbody tr:last-child td.td-rae::after {
+	content: "";
+	width: 100%;
+	height: 8px;
+	background: var(--teal-cell);
+	display: block;
+	position: absolute;
+	bottom: -8px;
+	left: -0.5px;
+	border-radius: 0 0 8px 8px;
+	border: 1px solid var(--check-bg);
+	border-top: 0;
+}
+.th-rae-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: .1rem;
+	transform: scaleY(0.8333);
+}
+.th-rae-brand {
+	font-size: 24px;
+	font-weight: 700;
+	font-family: Catchy Mager;
+	letter-spacing: 0;
+	color: #fff;
+	line-height: 1;	
+}
+.th-rae-sub {
+	font-size: 14px;
+	letter-spacing: 0;
+	color: rgba(255,255,255,.78);
+	font-weight: 500;	
+}
+
+/* treatment cols: icon + text inline */
+.th-treat {
+	text-align: left;
+}
+.th-treat-inner {
+	display: flex;
+	align-items: center;
+	gap: .45rem;
+	justify-content: center;
+}
+.th-treat-inner svg {
+	width: 22px;
+	height: 22px;
+	flex-shrink: 0;
+	stroke: var(--cross-fg);
+	fill: none;
+	stroke-width: 1.6;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.th-treat-label {
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0;	
+	color: var(--text-body);
+	line-height: 1.25;
+}
+.cmp-table thead th.th-treat {
+	background: var(--row-alt);
+	border-right: 1px solid var(--border);
+}
+
+/* TBODY */
+.cmp-table tbody tr {
+	border-bottom: 1px solid var(--border);
+}
+.cmp-table tbody tr:last-child { border-bottom: none; }
+.cmp-table tbody tr:nth-child(even) { background: var(--row-alt); }
+.cmp-table tbody tr:nth-child(odd)  { background: #fff; }
+
+.cmp-table tbody td {
+	padding: .85rem .85rem;
+	vertical-align: middle;
+	font-size: .82rem;
+	color: var(--text-body);
+	border-right: 1px solid var(--border);
+	text-align: left;
+}
+.cmp-table tbody td:last-child { border-right: none; }
+
+/* ── Label cell ── */
+.td-lbl {
+	font-weight: 600;
+	color: var(--text-dark);
+}
+.cmp-table tbody td.td-lbl {
+	border-right: 1px solid var(--check-bg);
+}
+.td-lbl-inner {
+	display: flex;
+	align-items: center;
+	gap: .6rem;
+}
+.row-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+.row-icon svg {
+	width: 32px;
+	height: auto;
+	stroke: var(--teal);
+	/* padding: 5px; */
+}
+.lbl-text {
+	font-size: .82rem;
+	font-weight: 600;
+	color: var(--text-dark);
+	line-height: 1.2;
+}
+
+/* ── RAE body cell ── */
+.td-rae {
+	background: var(--teal-cell) !important;
+	box-shadow: var(--teal-cell) 0px 2px 8px;
+	box-shadow: -8px 0 16px -8px rgba(149, 157, 165, 0.3), 8px 0 16px -8px rgba(149, 157, 165, 0.3);
+}
+
+.cmp-table tbody td.td-rae {
+	border-right-color: #377e99;
+	border-left-color: #377e99;
+}
+
+/* ── Badge: icon + text side by side ── */
+.rae-table-badge {
+	display: flex;
+	align-items: center;
+	gap: .55rem;
+}
+
+.bi {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+.bi svg {
+	width: 24px;
+	height: 24px;
+	stroke-width: 2.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
+}
+.bi-check { 
+	/* background: var(--check-bg);  */
+	width: 24px;
+	height: 24px;
+}
+.bi-check svg { 
+	/* stroke: #fff; */
+	width: 24px;
+	height: 24px;
+}
+.bi-cross { 
+	/* background: var(--cross-bg);  */
+}
+.bi-cross svg { 
+	/* stroke: var(--cross-fg);  */
+}
+
+.bt {
+	font-size: .8rem;
+	line-height: 1.35;
+	color: var(--text-body);
+}
+
+/* RAE badge text — darker teal */
+.td-rae .bt {
+	color: var(--check-bg);
+	font-weight: 600;
+}
+
+/* Cost price bold */
+.rae-table-price {
+	font-weight: 700;
+	font-size: .9rem;
+	color: var(--teal-hdr);
+}
+
+
+.rae-table-bottom-note {
+	width: 100%;
+	margin-top: 2rem;
+	padding: 1rem;
+	font-size: 24px;
+	border-radius: 8px;
+	color: var(--check-bg);
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	background-image: url(https://cdn.shopify.com/s/files/1/0704/7253/2264/files/leaves-background.webp?v=1778166086);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	font-family: 'Catchy Mager';
+	line-height: normal;
+}
+
+@media screen and (min-width: 990px){
+	.rae-table-bottom-note,
+	.cmp-wrap {
+		width: 90%;
+	}
+}
+
+@media (max-width: 990px) and (min-width: 768px) {
+	.cmp-table tbody td,
+	.cmp-table thead th {
+		padding: 10px 8px;
+	}
+	.bt,
+	.lbl-text,
+	.th-treat-label {
+		font-size: 12px;
+	}
+	.row-icon {
+		width: 24px;
+		height: 24px;
+	}
+	.cmp-table .th-rae {
+		padding: 5px;
+	}
+}
+
+/* ══════════════════════════════════════════════
+MOBILE ≤ 768px
+Label col: icon stacked above text (matches mobile image)
+Badge: stays inline but smaller
+══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+	
+	.cmp-wrap {
+		border-radius: 6px;
+		width: 100%;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		padding: 10px 4px 12px;
+		overflow-y: hidden;
+		box-shadow: none;
+		border: 0;
+	}
+	
+	.cmp-table {
+		width: 600px;
+		min-width: 100%;
+		border-collapse: separate;
+		border-spacing: 0;
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+	}
+	
+	/* tighter columns */
+	.col-lbl { width: 22%; }
+	.col-rae { width: 20%; }
+	.col-alt { width: 19.33%; }
+	
+	.cmp-table thead th { padding: .65rem .4rem; }
+	
+	.th-rae-brand { font-size: 1rem; letter-spacing: .12em; }
+	.th-rae-sub   { font-size: .45rem; }
+	
+	.th-treat-inner svg  { width: 16px; height: 16px; }
+	.th-treat-label,
+	.cmp-table thead th.th-lbl { 
+		font-size: 9px;
+		letter-spacing: 0; 
+	}
+	
+	/* label cell — stack icon above text */
+	.td-lbl-inner { 
+		flex-direction: column; 
+		align-items: center; 
+		gap: .3rem; 
+	}
+	.row-icon     { width: 26px; height: 26px; }
+	.row-icon svg { 
+		width: 24px;
+		height: 24px;
+	}
+	.lbl-text     { font-size: .62rem; text-align: center; }
+	
+	.cmp-table tbody td { 
+		padding: .65rem .35rem;
+		font-size: .72rem;
+	}
+	.bi   { 
+		width: 18px; 
+		height: 18px; 
+	}
+	.bi svg { 
+		width: 18px; 
+		height: 18px; 
+	}
+	.bt { 
+		font-size: .62rem; 
+	}
+	.rae-table-price { 
+		font-size: .75rem; 
+	}
+	.rae-table-badge { 
+		gap: .35rem;
+	}
+	.rae-table-bottom-note {
+		font-size: 16px;
+		margin-top: 0.5rem;
+	}
+	.cmp-table th,
+	.cmp-table td {
+		padding: 12px 10px;
+		font-size: 14px;
+	}
+	.cmp-table .th-rae {
+		transform: scaleY(1.15)
+	}
+	.cmp-table .rae-table-badge {
+		white-space: normal;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 480px){
+	.rae-table-bottom-note p{
+		max-width: 230px;
+        margin: 0 auto;
+        font-weight: 700;
+        font-size: 13px;
+	}
+}

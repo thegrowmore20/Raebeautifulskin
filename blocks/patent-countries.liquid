@@ -1,0 +1,527 @@
+<style>
+
+  :root {
+    --rae-bg-start: #eaf2f6;
+    --rae-bg-end: #f5f9fb;
+    --rae-card-bg: #ffffff;
+    --rae-card-border: #377E99;
+    --rae-primary: #1f4f63;
+    --rae-text: #2a3f4a;
+    --rae-muted: #5a7080;
+    --rae-line: #b6c9d4;
+  }
+
+.rae-patents {
+  color: var(--rae-text);
+  background: linear-gradient(180deg, var(--rae-bg-start) 0%, var(--rae-bg-end) 100%);
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.patent-footer-group {
+    max-width: 700px;   
+     margin-left: auto;
+    margin-right: auto;
+}
+
+
+.rae-patents__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+  position: relative;
+}
+.rae-patents__col {
+  display: grid;
+  gap: 1rem;
+}
+
+.rae-patents__card {  
+  border: 1px solid var(--rae-card-border);
+  border-radius: 14px;
+  padding: clamp(1rem, 2.5vw, 1.75rem) clamp(0.75rem, 2vw, 1.5rem);
+  text-align: center;
+  position: relative;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  box-shadow: 0 1px 3px rgba(31, 79, 99, 0.04);
+}
+.rae-patents__flag {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.rae-patents__flag svg { width: 100%; height: 100%; display: block; }
+
+.rae-patents__country {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--rae-primary);
+}
+.rae-patents__divider {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--rae-line);
+  font-size: 0.6rem;
+}
+.rae-patents__divider::before,
+.rae-patents__divider::after {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background: var(--rae-line);
+}
+.rae-patents__divider span { color: var(--rae-line); }
+
+.rae-patents__benefit {
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  font-weight: 500;
+  color: var(--rae-text);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.rae-patents__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0.5rem;
+  min-height: 320px;
+}
+
+.rae-patents__product {
+  position: relative;
+  z-index: 1;
+  width: clamp(170px, 28vw, 360px);
+  height: auto;
+  aspect-ratio: 280 / 400;
+  object-fit: contain;
+}
+
+.rae-patents__footer {
+  max-width: 760px;
+  margin: clamp(2rem, 5vw, 3rem) auto 0;
+  background: var(--rae-card-bg);
+  border: 1px solid var(--rae-card-border);
+  border-radius: 14px;
+  padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1rem, 3vw, 2rem);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: left;
+  box-shadow: 0 1px 3px rgba(31, 79, 99, 0.04);
+}
+.rae-patents__beaker {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  color: var(--rae-primary);
+}
+.rae-patents__footer-text {
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  line-height: 1.5;
+  margin: 0;
+  color: var(--rae-muted);
+}
+.rae-patents__footer-text strong {
+  color: var(--rae-primary);
+  font-weight: 600;
+  display: block;
+  margin-top: 0.15rem;
+}
+.patent-footer-note strong {
+  color: var(--rae-primary);
+}
+
+[style*="--horizontal-alignment: center"]>.patent-footer-note.text-block {
+    --text-align-default: left;
+}
+
+@media (min-width: 768px) {
+  .rae-patents__grid {
+    grid-template-columns: 1fr auto 1fr;
+    gap: clamp(1rem, 4vw, 3.5rem);
+  }
+  .rae-patents__col { gap: 1rem; }
+}
+
+/* ============ Desktop layout (≥ 900px) ============ */
+@media (min-width: 900px) {
+  
+
+  /* Decorative connecting lines from cards toward the bottle */
+  
+  .rae-patents__col--left  .rae-patents__card::after,
+  .rae-patents__col--right .rae-patents__card::after {
+    content: "";
+    position: absolute;
+    top: 18%;
+    height: 100%;
+    {% comment %} background: var(--rae-line); {% endcomment %}
+    
+    {% comment %} width: clamp(0.75rem, 3vw, 2.25rem); {% endcomment %}
+     width: 100px;
+  }
+  .rae-patents__col--left  .rae-patents__card::after { right: calc(-1 * clamp(0.75rem, 3vw, 2.25rem)); }
+  .rae-patents__col--right .rae-patents__card::after { left:  calc(-1 * clamp(0.75rem, 3vw, 2.25rem)); }
+  .rae-patents__col--left  .rae-patents__card::after {
+    background: url('https://cdn.shopify.com/s/files/1/0704/7253/2264/files/line.png?v=1779189187');
+    right: -100px;
+    left: auto;
+    background-size: 100px;
+    background-repeat: no-repeat;
+  }
+  .rae-patents__col--right .rae-patents__card::after {
+    background: url('https://cdn.shopify.com/s/files/1/0704/7253/2264/files/line-2.png?v=1779189188');
+    left: -100px;
+    background-size: 100px;
+    background-repeat: no-repeat;
+  }
+}
+
+/* ============ Mobile layout (< 900px) ============ */
+@media (max-width: 767px) {
+  .rae-patents__center { order: -1; margin-bottom: 0rem; }
+  .rae-patents__col { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .rae-patents__card { min-height: 160px; padding: 10px; }
+  .rae-patents__footer { flex-direction: column; text-align: center; gap: 0.75rem; }
+}
+
+@media (max-width: 750px) {
+  .patent-footer-group-inner .group-block-content.layout-panel-flex {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .patent-footer-group-inner .group-block-content.layout-panel-flex rte-formatter p {
+    font-size: 14px;
+  }
+  .rae-patents__country {
+    letter-spacing: 0;
+  }
+  .rae-patents__center {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rae-patents__grid {
+    gap: 10px;
+  }
+  .rae-patents__col { grid-template-columns: repeat(2, 1fr); gap: 10px }
+  [style*="--horizontal-alignment: center"]>.patent-footer-note.text-block {
+    --text-align-default: left;
+}
+}
+
+</style>
+
+<div class="rae-patents__grid">
+
+    <!-- ============ LEFT COLUMN ============ -->
+    <div class="rae-patents__col rae-patents__col--left">
+
+      <!-- UNITED STATES -->
+      <article class="rae-patents__card">
+        <div class="rae-patents__flag" aria-hidden="true">
+					{% if block.settings.patent__image_1 != blank %}
+						<img src="{{ block.settings.patent__image_1 | image_url: width: 400 }}" loading="lazy" width="{{ block.settings.patent__image_1.width }}" height="{{ block.settings.patent__image_1.height }}"/>
+					{% else %}	
+						<svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+							<defs><clipPath id="rae-usa-clip"><circle cx="28" cy="28" r="28"/></clipPath></defs>
+							<g clip-path="url(#rae-usa-clip)">
+								<rect width="56" height="56" fill="#fff"/>
+								<rect y="4"  width="56" height="4" fill="#b22234"/>
+								<rect y="12" width="56" height="4" fill="#b22234"/>
+								<rect y="20" width="56" height="4" fill="#b22234"/>
+								<rect y="28" width="56" height="4" fill="#b22234"/>
+								<rect y="36" width="56" height="4" fill="#b22234"/>
+								<rect y="44" width="56" height="4" fill="#b22234"/>
+								<rect y="52" width="56" height="4" fill="#b22234"/>
+								<rect width="24" height="28" fill="#3c3b6e"/>
+								<g fill="#fff">
+									<circle cx="4"  cy="5"  r="1"/><circle cx="10" cy="5"  r="1"/><circle cx="16" cy="5"  r="1"/><circle cx="22" cy="5"  r="1"/>
+									<circle cx="7"  cy="10" r="1"/><circle cx="13" cy="10" r="1"/><circle cx="19" cy="10" r="1"/>
+									<circle cx="4"  cy="15" r="1"/><circle cx="10" cy="15" r="1"/><circle cx="16" cy="15" r="1"/><circle cx="22" cy="15" r="1"/>
+									<circle cx="7"  cy="20" r="1"/><circle cx="13" cy="20" r="1"/><circle cx="19" cy="20" r="1"/>
+									<circle cx="4"  cy="25" r="1"/><circle cx="10" cy="25" r="1"/><circle cx="16" cy="25" r="1"/><circle cx="22" cy="25" r="1"/>
+								</g>
+							</g>
+						</svg>
+					{% endif %}
+        </div>
+        <span class="rae-patents__country">
+					{% if block.settings.patent_country_1 != blank %}
+						{{ block.settings.patent_country_1 }}
+					{% else %}
+						UNITED STATES
+					{% endif %}
+				</span>
+        <span class="rae-patents__divider" aria-hidden="true">
+          <span>
+             <svg class="" width="11" height="10" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.56607 17.1001C9.49196 16.9272 9.42434 16.7714 9.35837 16.6151C9.04344 15.8691 8.7322 15.1219 8.41339 14.3775C8.00372 13.4208 7.42521 12.4717 6.67184 11.7184C5.74332 10.79 4.12963 10.0793 2.86507 9.60654C2.18804 9.35343 1.50868 9.10576 0.83048 8.85536C0.587429 8.7656 0.344572 8.67547 0.101715 8.58516C0.0725568 8.5743 0.0441734 8.56172 0 8.54362C0.0491139 8.52389 0.0826314 8.50932 0.117021 8.49675C1.05057 8.15279 1.9911 7.8243 2.91651 7.46215C5.12005 6.59994 7.25888 5.15569 8.26256 3.12704C8.46938 2.70897 8.63329 2.27234 8.81609 1.84386C9.05255 1.28942 9.28805 0.644031 9.52412 0.0894061C9.53478 0.0643398 9.54689 0.0398165 9.56529 0C9.58534 0.0437076 9.60065 0.0751084 9.61431 0.107233C9.98077 0.970255 10.3469 1.92386 10.7134 2.78688C11.0738 3.63561 11.5735 4.40678 12.207 5.10076C12.933 5.89619 14.1649 6.54592 15.147 7.04969C15.5928 7.27836 16.0622 7.45437 16.5342 7.62703C17.3155 7.91271 18.0946 8.20328 18.8746 8.49195C18.9105 8.50516 18.9458 8.51955 19.0001 8.54063C18.9562 8.55927 18.9272 8.57294 18.8969 8.58416C17.9735 8.92731 17.0479 9.26566 16.1268 9.61396C14.3893 10.271 12.6176 11.3271 11.5721 12.781C11.209 13.2859 10.9161 13.9156 10.6795 14.4829C10.3281 15.3255 9.96837 16.1651 9.61189 17.0059C9.60055 17.0327 9.58651 17.0584 9.56626 17.1L9.56607 17.1001Z" fill="var(--rae-line)"/>
+          </svg>
+        </span>
+      </span>
+        <p class="rae-patents__benefit">
+					{% if block.settings.patent_text_1 != blank %}
+						{{ block.settings.patent_text_1 }}
+					{% else %}
+						Growth Factor<br>Stabilization
+					{% endif %}	
+				</p>
+      </article>
+
+      <!-- JAPAN -->
+      <article class="rae-patents__card">
+        <div class="rae-patents__flag" aria-hidden="true">
+					{% if block.settings.patent__image_2 != blank %}
+						<img src="{{ block.settings.patent__image_2 | image_url: width: 400 }}" loading="lazy" width="" height=""/>
+					{% else %}	
+						<svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+							<circle cx="28" cy="28" r="28" fill="#fff"/>
+							<circle cx="28" cy="28" r="11" fill="#bc002d"/>
+						</svg>
+					{% endif %}
+        </div>
+        <span class="rae-patents__country">
+					{% if block.settings.patent_country_2 != blank %}
+						{{ block.settings.patent_country_2 }}
+					{% else %}
+						JAPAN
+					{% endif %}
+				</span>
+               <span class="rae-patents__divider" aria-hidden="true">
+          <span>
+             <svg class="" width="11" height="10" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.56607 17.1001C9.49196 16.9272 9.42434 16.7714 9.35837 16.6151C9.04344 15.8691 8.7322 15.1219 8.41339 14.3775C8.00372 13.4208 7.42521 12.4717 6.67184 11.7184C5.74332 10.79 4.12963 10.0793 2.86507 9.60654C2.18804 9.35343 1.50868 9.10576 0.83048 8.85536C0.587429 8.7656 0.344572 8.67547 0.101715 8.58516C0.0725568 8.5743 0.0441734 8.56172 0 8.54362C0.0491139 8.52389 0.0826314 8.50932 0.117021 8.49675C1.05057 8.15279 1.9911 7.8243 2.91651 7.46215C5.12005 6.59994 7.25888 5.15569 8.26256 3.12704C8.46938 2.70897 8.63329 2.27234 8.81609 1.84386C9.05255 1.28942 9.28805 0.644031 9.52412 0.0894061C9.53478 0.0643398 9.54689 0.0398165 9.56529 0C9.58534 0.0437076 9.60065 0.0751084 9.61431 0.107233C9.98077 0.970255 10.3469 1.92386 10.7134 2.78688C11.0738 3.63561 11.5735 4.40678 12.207 5.10076C12.933 5.89619 14.1649 6.54592 15.147 7.04969C15.5928 7.27836 16.0622 7.45437 16.5342 7.62703C17.3155 7.91271 18.0946 8.20328 18.8746 8.49195C18.9105 8.50516 18.9458 8.51955 19.0001 8.54063C18.9562 8.55927 18.9272 8.57294 18.8969 8.58416C17.9735 8.92731 17.0479 9.26566 16.1268 9.61396C14.3893 10.271 12.6176 11.3271 11.5721 12.781C11.209 13.2859 10.9161 13.9156 10.6795 14.4829C10.3281 15.3255 9.96837 16.1651 9.61189 17.0059C9.60055 17.0327 9.58651 17.0584 9.56626 17.1L9.56607 17.1001Z" fill="var(--rae-line)"/>
+          </svg>
+        </span>
+      </span>
+        <p class="rae-patents__benefit">
+					{% if block.settings.patent_text_2 != blank %}
+						{{ block.settings.patent_text_2 }}
+					{% else %}
+						Micro-encapsulated<br>GF System
+					{% endif %}	
+				</p>
+      </article>
+
+    </div>
+
+    <!-- ============ CENTER PRODUCT ============ -->
+    <div class="rae-patents__center">
+			{% if block.settings.center_image != blank %}
+				<img src="{{ block.settings.center_image | image_url: width: 800 }}" loading="lazy" width="" height=""/>
+			{% else %}		
+      <img
+        class="rae-patents__product"
+        src="https://cdn.shopify.com/s/files/1/0704/7253/2264/files/prudct_e5f2bfcc-878b-42ee-8b8c-e3774f53af02.png?v=1779106164"
+        alt="Rae Beautiful Skin Anti-Aging Serum 15mL"
+        width="280"
+        height="400"
+        loading="lazy"
+        decoding="async">
+			{% endif %}	
+    </div>
+
+    <!-- ============ RIGHT COLUMN ============ -->
+    <div class="rae-patents__col rae-patents__col--right">
+
+      <!-- EUROPEAN UNION -->
+      <article class="rae-patents__card">
+        <div class="rae-patents__flag" aria-hidden="true">
+					{% if block.settings.patent__image_3 != blank %}
+						<img src="{{ block.settings.patent__image_3 | image_url: width: 400 }}" loading="lazy" width="" height=""/>
+					{% else %}	
+						<svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+							<circle cx="28" cy="28" r="28" fill="#003399"/>
+							<g fill="#ffcc00">
+								<circle cx="28" cy="14" r="1.9"/>
+								<circle cx="37.5" cy="17" r="1.9"/>
+								<circle cx="43" cy="24.5" r="1.9"/>
+								<circle cx="43" cy="33" r="1.9"/>
+								<circle cx="37.5" cy="40" r="1.9"/>
+								<circle cx="28" cy="43" r="1.9"/>
+								<circle cx="18.5" cy="40" r="1.9"/>
+								<circle cx="13" cy="33" r="1.9"/>
+								<circle cx="13" cy="24.5" r="1.9"/>
+								<circle cx="18.5" cy="17" r="1.9"/>
+							</g>
+						</svg>
+					{% endif %}
+        </div>
+        <span class="rae-patents__country">
+					{% if block.settings.patent_country_3 != blank %}
+						{{ block.settings.patent_country_3 }}
+					{% else %}
+						EUROPEAN UNION
+					{% endif %}
+				</span>
+                <span class="rae-patents__divider" aria-hidden="true">
+          <span>
+             <svg class="" width="11" height="10" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.56607 17.1001C9.49196 16.9272 9.42434 16.7714 9.35837 16.6151C9.04344 15.8691 8.7322 15.1219 8.41339 14.3775C8.00372 13.4208 7.42521 12.4717 6.67184 11.7184C5.74332 10.79 4.12963 10.0793 2.86507 9.60654C2.18804 9.35343 1.50868 9.10576 0.83048 8.85536C0.587429 8.7656 0.344572 8.67547 0.101715 8.58516C0.0725568 8.5743 0.0441734 8.56172 0 8.54362C0.0491139 8.52389 0.0826314 8.50932 0.117021 8.49675C1.05057 8.15279 1.9911 7.8243 2.91651 7.46215C5.12005 6.59994 7.25888 5.15569 8.26256 3.12704C8.46938 2.70897 8.63329 2.27234 8.81609 1.84386C9.05255 1.28942 9.28805 0.644031 9.52412 0.0894061C9.53478 0.0643398 9.54689 0.0398165 9.56529 0C9.58534 0.0437076 9.60065 0.0751084 9.61431 0.107233C9.98077 0.970255 10.3469 1.92386 10.7134 2.78688C11.0738 3.63561 11.5735 4.40678 12.207 5.10076C12.933 5.89619 14.1649 6.54592 15.147 7.04969C15.5928 7.27836 16.0622 7.45437 16.5342 7.62703C17.3155 7.91271 18.0946 8.20328 18.8746 8.49195C18.9105 8.50516 18.9458 8.51955 19.0001 8.54063C18.9562 8.55927 18.9272 8.57294 18.8969 8.58416C17.9735 8.92731 17.0479 9.26566 16.1268 9.61396C14.3893 10.271 12.6176 11.3271 11.5721 12.781C11.209 13.2859 10.9161 13.9156 10.6795 14.4829C10.3281 15.3255 9.96837 16.1651 9.61189 17.0059C9.60055 17.0327 9.58651 17.0584 9.56626 17.1L9.56607 17.1001Z" fill="var(--rae-line)"/>
+          </svg>
+        </span>
+      </span>
+        <p class="rae-patents__benefit">
+					{% if block.settings.patent_text_3 != blank %}
+						{{ block.settings.patent_text_3 }}
+					{% else %}
+						Micro-encapsulated<br>GF System
+					{% endif %}
+				</p>
+      </article>
+
+      <!-- CANADA -->
+      <article class="rae-patents__card">
+        <div class="rae-patents__flag" aria-hidden="true">
+					{% if block.settings.patent__image_4 != blank %}
+						<img src="{{ block.settings.patent__image_4 | image_url: width: 400 }}" loading="lazy" width="" height=""/>
+					{% else %}
+						<svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+							<defs><clipPath id="rae-ca-clip"><circle cx="28" cy="28" r="28"/></clipPath></defs>
+							<g clip-path="url(#rae-ca-clip)">
+								<rect width="56" height="56" fill="#fff"/>
+								<rect width="14" height="56" fill="#d52b1e"/>
+								<rect x="42" width="14" height="56" fill="#d52b1e"/>
+								<path d="M28 17 L29.4 21 L33.5 20.2 L31.6 24 L35 26 L31.3 27.2 L32 31 L28.7 29 L28 33.5 L27.3 29 L24 31 L24.7 27.2 L21 26 L24.4 24 L22.5 20.2 L26.6 21 Z" fill="#d52b1e"/>
+							</g>
+						</svg>
+					{% endif %}
+        </div>
+        <span class="rae-patents__country">
+					{% if block.settings.patent_country_3 != blank %}
+						{{ block.settings.patent_country_3 }}
+					{% else %}
+						CANADA
+					{% endif %}
+				</span>
+                <span class="rae-patents__divider" aria-hidden="true">
+          <span>
+             <svg class="" width="11" height="10" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.56607 17.1001C9.49196 16.9272 9.42434 16.7714 9.35837 16.6151C9.04344 15.8691 8.7322 15.1219 8.41339 14.3775C8.00372 13.4208 7.42521 12.4717 6.67184 11.7184C5.74332 10.79 4.12963 10.0793 2.86507 9.60654C2.18804 9.35343 1.50868 9.10576 0.83048 8.85536C0.587429 8.7656 0.344572 8.67547 0.101715 8.58516C0.0725568 8.5743 0.0441734 8.56172 0 8.54362C0.0491139 8.52389 0.0826314 8.50932 0.117021 8.49675C1.05057 8.15279 1.9911 7.8243 2.91651 7.46215C5.12005 6.59994 7.25888 5.15569 8.26256 3.12704C8.46938 2.70897 8.63329 2.27234 8.81609 1.84386C9.05255 1.28942 9.28805 0.644031 9.52412 0.0894061C9.53478 0.0643398 9.54689 0.0398165 9.56529 0C9.58534 0.0437076 9.60065 0.0751084 9.61431 0.107233C9.98077 0.970255 10.3469 1.92386 10.7134 2.78688C11.0738 3.63561 11.5735 4.40678 12.207 5.10076C12.933 5.89619 14.1649 6.54592 15.147 7.04969C15.5928 7.27836 16.0622 7.45437 16.5342 7.62703C17.3155 7.91271 18.0946 8.20328 18.8746 8.49195C18.9105 8.50516 18.9458 8.51955 19.0001 8.54063C18.9562 8.55927 18.9272 8.57294 18.8969 8.58416C17.9735 8.92731 17.0479 9.26566 16.1268 9.61396C14.3893 10.271 12.6176 11.3271 11.5721 12.781C11.209 13.2859 10.9161 13.9156 10.6795 14.4829C10.3281 15.3255 9.96837 16.1651 9.61189 17.0059C9.60055 17.0327 9.58651 17.0584 9.56626 17.1L9.56607 17.1001Z" fill="var(--rae-line)"/>
+          </svg>
+        </span>
+      </span>
+        <p class="rae-patents__benefit">
+					{% if block.settings.patent_text_4 != blank %}
+						{{ block.settings.patent_text_4 }}
+					{% else %}
+						Oxidation-Resistant<br>Formula
+					{% endif %}
+				</p>
+      </article>
+
+    </div>
+
+</div>
+
+{% schema %} 
+{
+    "name" : "Patent Countries",
+    "tag": null,
+    "settings": [
+			{
+				"type": "header",
+				"content": "Left column"
+			},
+			{
+				"id": "patent__image_1",
+				"type": "image_picker",
+				"label": "Patent Image"
+			},
+			{
+				"id": "patent_country_1",
+				"type": "richtext",
+				"label": "Patent Country"
+			},
+			{
+				"id": "patent_text_1",
+				"type": "richtext",
+				"label": "Patent Subtext"
+			},
+			{
+				"id": "patent__image_2",
+				"type": "image_picker",
+				"label": "Patent Image"
+			},
+			{
+				"id": "patent_country_2",
+				"type": "richtext",
+				"label": "Patent Country"
+			},
+			{
+				"id": "patent_text_2",
+				"type": "richtext",
+				"label": "Patent Subtext"
+			},
+			{
+				"type": "header",
+				"content": "Centeral Image"
+			},
+			{
+				"id": "center_image",
+				"type": "image_picker",
+				"label": "Product Image"
+			},
+			{
+				"type": "header",
+				"content": "Right column"
+			},
+			{
+				"id": "patent__image_3",
+				"type": "image_picker",
+				"label": "Patent Image"
+			},
+			{
+				"id": "patent_country_3",
+				"type": "richtext",
+				"label": "Patent Country"
+			},
+			{
+				"id": "patent_text_3",
+				"type": "richtext",
+				"label": "Patent Subtext"
+			},
+			{
+				"id": "patent__image_4",
+				"type": "image_picker",
+				"label": "Patent Image"
+			},
+			{
+				"id": "patent_country_4",
+				"type": "richtext",
+				"label": "Patent Country"
+			},
+			{
+				"id": "patent_text_4",
+				"type": "richtext",
+				"label": "Patent Subtext"
+			}
+		],
+    "presets": [
+        {
+            "name" : "Patent Countries",
+            "category" : "Custom Block"
+        }
+    ]
+}
+{% endschema %} 

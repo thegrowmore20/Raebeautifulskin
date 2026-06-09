@@ -1,0 +1,89 @@
+{%- liquid
+  assign threshold = settings.free_shipping_threshold | times: 100
+  assign cart_total = cart.total_price
+  assign has_subscription = false
+	assign progress = 0
+	assign remaining = 0
+
+  for item in cart.items
+    if item.selling_plan_allocation != blank
+      assign has_subscription = true
+      break
+    endif
+  endfor
+
+  if has_subscription
+    assign progress = 100
+    assign remaining = 0
+  elsif threshold > 0
+    assign progress = cart_total | times: 100 | divided_by: threshold
+
+    if progress > 100
+      assign progress = 100
+    endif
+    assign remaining = threshold | minus: cart_total
+		if remaining < 0
+			assign remaining = 0
+		endif
+  endif
+-%}
+
+{%- if threshold > 0 -%}
+  <div class="free-shipping-bar" data-free-shipping-bar>
+
+    <div class="free-shipping-bar__text">
+      {%- if has_subscription -%}
+        🎉 Your subscription unlocked FREE shipping!
+      {%- elsif cart_total >= threshold -%}
+        🎉 You unlocked FREE shipping!
+      {%- else -%}
+        You're only
+        <strong>{{ remaining | money }}</strong>
+        away from FREE shipping
+      {%- endif -%}
+    </div>
+
+    <div class="free-shipping-bar__track">
+      <div
+        class="free-shipping-bar__progress"
+        style="width: {{ progress }}%;"
+        data-progress="{{ progress }}"
+      ></div>
+    </div>
+
+  </div>
+
+  <style>
+    .free-shipping-bar {
+			--progress-bar-bg: #ededed;
+			--progress-color: #377E99;
+      --progress-success-colors: #34A853;
+      --progress-yellow: #FBBC05;
+      padding: var(--cart-drawer-padding);
+      padding-top: 0;
+    }
+    .free-shipping-bar__text {
+      font-size: 14px;
+      line-height: 1.4;
+      margin-bottom: 5px;
+    }
+    .free-shipping-bar__track {
+      width: 100%;
+      height: 5px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: var(--progress-bar-bg);
+      position: relative;
+    }
+
+    .free-shipping-bar__progress {
+      height: 100%;
+      border-radius: 999px;
+      background: var(--progress-color);
+      transition: width 0.3s ease;
+    }
+    .free-shipping-bar__progress[data-progress="100"] {
+      background: var(--progress-success-colors)
+    }
+  </style>
+{%- endif -%}

@@ -1,0 +1,97 @@
+<style>
+    .eyebrow-block {
+        width: 100%;
+    }
+        .{{ block.id }}-color svg path{
+            fill: {{ block.settings.icon_color }};
+        }
+       .{{ block.id }}-color.eye-brow-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: {{ block.settings.line_width }}px;
+            {% case block.settings.horizontal_alignment %}
+            {% when 'left' %}
+                margin-left: 0;
+                margin-right: auto;
+            {% when 'center' %}
+                margin-left: auto;
+                margin-right: auto;
+            {% when 'right' %}
+                margin-left: auto;
+                margin-right: 0;
+            {% endcase %}
+        }
+      .{{ block.id }}-color .line-draw {
+            height: 1px;
+            background-color: {{ block.settings.icon_color }};
+            flex-grow: 1;
+            border-radius: 2px;
+        }
+
+        .sparkle-image {
+            margin: 0 10px; 
+        }
+
+</style>
+
+<span class="eye-brow-wrapper {{ block.id }}-color">
+    <span class="line-draw line-left"></span>
+     <svg class="sparkle-image" width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <path d="M9.56607 17.1001C9.49196 16.9272 9.42434 16.7714 9.35837 16.6151C9.04344 15.8691 8.7322 15.1219 8.41339 14.3775C8.00372 13.4208 7.42521 12.4717 6.67184 11.7184C5.74332 10.79 4.12963 10.0793 2.86507 9.60654C2.18804 9.35343 1.50868 9.10576 0.83048 8.85536C0.587429 8.7656 0.344572 8.67547 0.101715 8.58516C0.0725568 8.5743 0.0441734 8.56172 0 8.54362C0.0491139 8.52389 0.0826314 8.50932 0.117021 8.49675C1.05057 8.15279 1.9911 7.8243 2.91651 7.46215C5.12005 6.59994 7.25888 5.15569 8.26256 3.12704C8.46938 2.70897 8.63329 2.27234 8.81609 1.84386C9.05255 1.28942 9.28805 0.644031 9.52412 0.0894061C9.53478 0.0643398 9.54689 0.0398165 9.56529 0C9.58534 0.0437076 9.60065 0.0751084 9.61431 0.107233C9.98077 0.970255 10.3469 1.92386 10.7134 2.78688C11.0738 3.63561 11.5735 4.40678 12.207 5.10076C12.933 5.89619 14.1649 6.54592 15.147 7.04969C15.5928 7.27836 16.0622 7.45437 16.5342 7.62703C17.3155 7.91271 18.0946 8.20328 18.8746 8.49195C18.9105 8.50516 18.9458 8.51955 19.0001 8.54063C18.9562 8.55927 18.9272 8.57294 18.8969 8.58416C17.9735 8.92731 17.0479 9.26566 16.1268 9.61396C14.3893 10.271 12.6176 11.3271 11.5721 12.781C11.209 13.2859 10.9161 13.9156 10.6795 14.4829C10.3281 15.3255 9.96837 16.1651 9.61189 17.0059C9.60055 17.0327 9.58651 17.0584 9.56626 17.1L9.56607 17.1001Z" fill="white"/>
+    </svg>
+    <span class="line-draw line-right"></span>
+</span>
+
+
+{% schema %}
+{
+    "name": "Eyebrow",
+    "class": "eyebrow-block",
+    "settings": [
+        {
+            "type": "color",
+            "id" : "icon_color",
+            "label": "Color",
+            "default": "#377E99"
+        },
+        {
+            "type": "range",
+            "id" : "line_width",
+            "label": "Width",
+            "max": 500,
+            "min": 50,
+            "step": 5,
+            "unit": "px",
+            "default": 175
+        },
+        {
+            "type": "select",
+            "id": "horizontal_alignment",
+            "label": "t:settings.alignment",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "t:options.left"
+                },
+                {
+                    "value": "center",
+                    "label": "t:options.center"
+                },
+                {
+                    "value": "right",
+                    "label": "t:options.right"
+                }
+            ],
+            "default": "center"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Eyebrow",
+            "category": "Custom Block"
+        }
+    ],
+}
+{% endschema %}

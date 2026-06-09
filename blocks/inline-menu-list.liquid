@@ -1,0 +1,52 @@
+{% liquid
+  assign block_settings = block.settings
+  assign menu = block_settings.menu
+%}
+
+<nav class="policy-menu-wrapper" {{ block.shopify_attributes }}>
+{% if menu %}
+    <ul class="list-unstyled">
+    {% for link in menu.links %}
+        <li class="policy-menu__item {{ block_settings.link_preset }}">
+        <a href="{{ link.url }}">
+            {{ link.title }}
+        </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+</nav>
+{% stylesheet %}
+
+.policy-menu-wrapper{
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 14px;
+        gap: var(--gap-2xs);
+        align-items: center;
+        justify-content: flex-start;
+    }
+}
+
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "Inline Menu",
+  "tag": null,
+  "settings":[
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:settings.menu",
+      "default": "main-menu"
+    },
+  ],
+  "presets": [
+    {
+        "name": "Inline Menu",
+        "category": "Custom Block"
+    }
+  ]
+}
+{% endschema %}

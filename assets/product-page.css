@@ -1,0 +1,94 @@
+
+* subscription css */
+.WIDGET_TYPE_7 .appstle_widget_title {
+  margin-bottom: 10px;
+  font-weight: 500 !important;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  text-transform: none;
+}
+.product-details div[ref="priceContainer"] {
+  display: flex;
+  align-items: center;
+}
+product-price .appstle_subscription_final_price,
+.sticky-add-to-cart__price .appstle_subscription_final_price {
+  color: var(--color, var(--font-h5-color));
+  font-weight: 600;
+}
+.sticky-add-to-cart__price .appstle_subscription_save {
+  display: none;
+}
+.WIDGET_TYPE_7 .appstle_subscription_wrapper_option.appstle_include_dropdown {
+  margin-top: 20px;
+}
+#appstle_subscription_widget0 .appstle_subscribe_option {
+  margin-left: 0 !important
+}
+.appstle_subscription_wrapper_option:last-child:before {
+  content: "Most Popular";
+  visibility: visible;
+  font-size: 14px !important;
+  color: #fff !important;
+  background: #377E99 !important;
+  background: #EA4335 !important; 
+  display: block !important;
+  right: 2rem !important;
+  padding: 0px 8px !important;
+  border-radius:15px !important;
+  position:absolute;
+  z-index: 999;
+  font-weight: 600;
+  top: -13px;
+  text-transform: uppercase;
+}
+
+#appstle_subscription_widget0 .appstle_subscription_radio_wrapper {
+  align-items: center !important
+}
+
+.appstle_one_time_price_wrapper,
+span.appstle_subscription_amount.transcy-money {
+  font-weight: 600;
+}
+
+.appstle_subscription_save {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  letter-spacing: .5px !important;
+  padding: 3px 6px 2px !important;
+  font-size: 12px !important
+}
+
+.patent-footer * {
+    line-height: 1.2;
+}
+
+@media screen and (max-width: 749px){
+  #appstle_subscription_widget0 .appstle_subscription_amount_wrapper {
+    width: 55%;
+  }  
+  #appstle_subscription_widget0 .appstle_subscription_amount_wrapper .appstle_subscription_amount,
+  #appstle_subscription_widget0 .appstle_subscription_amount_wrapper .appstle_subscription_compare_amount,
+  #appstle_subscription_widget0 .appstle_one_time_price_wrapper {
+    font-size: 14px;
+  }
+  .WIDGET_TYPE_7 .appstle_widget_title {
+    font-size: calc(var(--summary-font-size) * .8);
+  }
+  .appstle_subscription_wrapper_option:last-child:before {
+    font-size: 12px !important;
+    top: -11px;
+  }
+  span.appstle_subscribe_save_text,
+  span.appstle_one_time_text {
+    line-height: 1.4;
+    font-size: 14px !important
+  }
+    .sticky-add-to-cart__price .appstle_subscription_final_price {
+      margin-right: 0 !important
+    }
+}
+
+/* subscription css end */

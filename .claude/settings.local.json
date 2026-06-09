@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Shopify__switch-shop",
+      "mcp__claude_ai_Shopify__get-shop-info"
+    ]
+  }
+}

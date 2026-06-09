@@ -1,0 +1,484 @@
+<style>
+	.aplus-v2.desktop {
+		min-width: 800px;
+		margin-left: auto;
+		margin-right: auto;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		word-break: break-word;
+	}
+	.aplus-v2 .aplus-container-3 {
+		padding: 40px 0 0;
+	}
+	.aplus-v2 .premium-aplus .aplus-h1 {
+		font-size: 32px;
+		line-height: 1.2em;
+		font-weight: 500;
+	}
+	.aplus-v2 .premium-aplus-module-5 .table-container {
+		position: relative;
+		opacity: 1;
+	}
+	.aplus-v2 .premium-aplus-module-5 .table-slider {
+		overflow-x: auto;
+		overflow-y: visible;
+		width: 100%;
+		{% comment %} border: 1px solid #d5d9d9; {% endcomment %}
+		border-radius: 8px;
+	}
+	.aplus-v2 .premium-aplus-module-5 table.a-bordered {
+		border-width: 0px;
+		border-color: #d5d9d9;
+		border-style: solid;
+		border-radius: 8px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.aplus-v2 .premium-aplus-module-5 table.a-bordered tr:last-child {
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+	}
+	.aplus-v2 .premium-aplus-module-5 table.a-bordered tr:last-child td {
+		{% comment %} border-bottom: 0; {% endcomment %}
+	}
+	.aplus-v2 .premium-aplus-module-5 table.a-bordered tr:last-child td:first-child {
+		border-bottom-left-radius: 8px;
+	}
+	.aplus-v2 .premium-aplus-module-5 table.a-bordered tr:last-child td:last-child {
+		border-bottom-right-radius: 8px;
+	}
+	th.aplus-data-column.top-header {
+		border: 0;
+	}
+	td.attribute.a-text-bold.column-cell-1 {
+		border-top-left-radius: 8px;
+	}
+	tr.first-content-row td:last-child {
+		border-top-right-radius: 8px;
+	}
+	.aplus-v2 .premium-aplus-module-5 .scroll-width {
+		overflow-x: scroll;
+		overflow-y: visible;
+	}
+	table.a-bordered {
+		border-start-start-radius: var(--__TxpmBlwIJ, .5rem);
+		border-start-end-radius: var(--__TxpmBlwIJ, .5rem);
+		border-end-start-radius: var(--__TxpmBlwIJ, .5rem);
+		border-end-end-radius: var(--__TxpmBlwIJ, .5rem);
+		border-width: var(--__TxpzNygdu, .0625rem);
+		margin-bottom: 22px;
+		border-style: solid;
+		border-color: var(--__dChNmAmGoMXsTxp, #d5d9d9);
+		border-collapse: separate;
+		border-spacing: 0;
+		overflow: hidden;
+	}
+	td, th {
+		padding: .1875rem;
+		vertical-align: top;
+	}
+	table.a-bordered td, table.a-bordered th {
+		border-bottom: 1px solid #d5d9d9;
+		border-right: 1px solid #d5d9d9;
+		border-color: #dfd9d9;
+		padding-block-start: 8px;
+		padding-inline-start: .75rem;
+		padding-inline-end: .75rem;
+		padding-block-end: 8px;
+		background-color: var(--__dChNmAmGoMXsPxT, #fff);
+	}
+	.aplus-v2 .premium-aplus-module-5 table.a-bordered td, .aplus-v2 .premium-aplus-module-5 table.a-bordered th {
+		background-color: #fff;
+		vertical-align: middle;
+	}
+	.aplus-v2 .premium-aplus-module-5 td.attribute.empty {
+		height: 300px;
+		border-top-left-radius: 8px;
+		border: 0;
+	}
+	tr.first-content-row td {
+		border-top: 1px solid #d5d9d9;
+	}
+	.aplus-v2 .premium-aplus-module-5.enso-comparison td.attribute.empty {
+		height: 250px;
+	}
+	td.aplus-data-column.secondary-content-column:last-of-type,
+	th.aplus-data-column.top-header:last-child {
+		{% comment %} border-right: 0; {% endcomment %}
+	}
+	th.aplus-data-column.top-header:last-child {
+		border-top-right-radius: 8px;
+	}
+	.aplus-v2 .premium-aplus-module-5 .attribute, .aplus-v2 .premium-aplus-module-5 .active-item {
+		position: sticky;
+	}
+	.aplus-v2 .premium-aplus-module-5 td.attribute {
+		min-width: 230px;
+		top: auto;
+		left: 0;
+		z-index: 7;
+	}
+	.aplus-v2 .premium-aplus-module-5 td.attribute:not(.empty) {
+		background-color: #f8f8f8;
+		border-left: 1px solid #d5d9d9;
+	}
+	
+	.aplus-v2 .premium-aplus-module-5 table.a-bordered td, .aplus-v2 .premium-aplus-module-5 table.a-bordered th {
+		background-color: #fff;
+	}
+	.aplus-v2 .premium-aplus-module-5 table.a-bordered th.active-item {
+		border: 1px solid #d5d9d9;
+		border-bottom: 0;
+		border-top-left-radius: 12px;
+		border-top-right-radius: 12px;
+	}
+	.aplus-v2 .aplus-review-right-padding {
+		padding-right: 0.1rem;
+	}
+	
+	.aplus-v2 .premium-aplus-module-5 td.active-item, 
+	.aplus-v2 .premium-aplus-module-5 th.active-item {
+		top: auto;
+		left: 230px;
+		z-index: 7;
+	}
+	.comparison-metric-name {
+		font-weight: 600;
+		font-size: 14px;
+	}
+	td.aplus-data-column {
+		font-size: 14px;
+		text-align: center;
+		padding: 9px !important;
+	}
+	.comparison-product-card .product-card {
+		border: 0;
+		padding: 0;
+	}
+	.comparison-product-card .custom-wishlist-button,
+	.comparison-product-card .product-badges-container,
+	.comparison-product-card .mt-4.empty\:hidden {
+		display: none
+	}
+	.comparison-product-card .group\/media:hover .group-hover\/media\:opacity-100 {
+		opacity: 0;
+	}
+	.comparison-product-card .product-card:hover {
+		transform: translateY(0)
+	}
+	.comparison-product-card h2.product-name {
+		-webkit-line-clamp: 1;
+		min-height: 25px;
+		font-size: 14px;
+	}
+	.comparison-product-card .add-to-cart-span {
+		font-size: 14px;
+	}
+	.enso-comparison .comparison-product-card quick-add-button,
+	.enso-comparison .comparison-product-card .product-card__info {
+		display: none;
+	}
+	
+	.enso-comparison .comparison-product-card .product-card-media.media.rounded-block {
+		padding-bottom: 0;
+	}
+	td.aplus-data-column.active.active-item.second-sticky-column,
+	th.aplus-data-column.top-header,
+	td.aplus-data-column.secondary-content-column {
+		max-width: 230px;
+		width: 230px;
+		min-width: 230px;
+	}
+	@media (max-width: 992px) {
+		[data-aplus-section-container] {
+			padding: 0;
+		}
+		.aplus-v2.desktop {
+			min-width: 100%;
+		}
+		.aplus-v2 .premium-aplus-module-5 td.attribute {
+			min-width: 170px;
+			left: -1px;
+		}
+		.aplus-v2 .premium-aplus-module-5 td.active-item, 
+		.aplus-v2 .premium-aplus-module-5 th.active-item {
+			left: 169px;
+			z-index: 3;
+		}
+	}
+	
+	/* mobile design */
+	@media (max-width: 768px){
+		.aplus-v2 .premium-aplus-module-5 table.a-bordered {
+			width: 100%;
+		}
+		td.aplus-data-column.active.active-item.second-sticky-column {
+			left: 0;
+			text-align: left;
+			display: inline-flex;
+			height: 100px;
+			align-items: end;
+		}
+		td.attribute.empty.first-sticky-column,
+		.aplus-v2 .premium-aplus-module-5.enso-comparison td.attribute.empty {
+			display: none !important;
+		}
+		td.aplus-data-column.secondary-content-column {
+			vertical-align: bottom;
+		}
+		.aplus-v2 .premium-aplus-module-5 td.active-item, .aplus-v2 .premium-aplus-module-5 th.active-item {
+			left: 0px;
+			z-index: 3;
+			position: relative;
+		}
+		.aplus-v2 .premium-aplus-module-5 td.attribute {
+			min-width: 170px;
+			left: -1px;
+			position: absolute;
+			background: transparent;
+			background-color: transparent !important;
+			height: 100px;
+			pointer-events: none;
+		}
+		td.aplus-data-column.active.active-item.second-sticky-column {
+			left: 0;
+			text-align: left;
+			display: inline-flex;
+			height: 100px;
+			align-items: end;
+		}
+		table.a-bordered td, table.a-bordered th {
+			border-right: 0;
+		}
+		.aplus-v2 .premium-aplus-module-5 table.a-bordered td,
+		.aplus-v2 .premium-aplus-module-5 table.a-bordered th {
+			vertical-align: bottom;
+		}
+		td.aplus-data-column.active.active-item.second-sticky-column, th.aplus-data-column.top-header, td.aplus-data-column.secondary-content-column {
+			max-width: 150px;
+			width: 150px;
+			min-width: 150px;
+		}
+	}
+</style>
+
+<div data-aplus-section-container>
+	<div class="aplus-v2 desktop">
+		<div class="premium-aplus premium-aplus-module-5 aplus-container-3 comparison-table enso-comparison">
+			<div class="section-header section-content-spacing rfs:mb-10 prose-align text-center">
+				<p class="heading h2">Why Choose RAE Over Expensive In-Clinic Treatments?</p>
+			</div>   
+			<div id="comparison-table-container-6" data-comparison-name="comparison-table-container-6" class="a-section a-spacing-none table-container">  
+			<div class="table-slider scroll-wrapper-bottom">
+				<table class="a-bordered a-horizontal-stripes scroll-width">
+					<tbody>
+						<tr class="header-row">
+							<td class="attribute empty"></td>
+							<th style="opacity:0" class="aplus-data-column top-header active active-item">
+								<div  class="comparison-product-card">
+									{% render 'product-card', card_product: product %}
+								</div>
+							</th>
+							
+							<th class="aplus-data-column top-header">
+								<div class="relative overflow-hidden group/media">
+									<a href="{{ url }}" tabindex="-1" data-instant aria-label="{{ card_product.title | default: 'Product' }}">
+										<div style="opacity:0" class="product-card-media media rounded-block [--aspect-ratio:--product-card-image-aspect] md:pb-6">
+											<lqip-element class="image-loader h-full">
+												<img src="https://cdn.shopify.com/s/files/1/0777/8339/files/71Bhm4vc2SL._SX679.jpg?v=1775045042&width=1440"
+													widths="360, 450, 540, 630, 720, 900, 1050, 1200, 1320, 1440" loading="lazy" width="" height=""
+													class="product-card__image product-thumbnail-shade"/>
+												</lqip-element>
+											</div>
+										</a>
+									</div>
+								</th>
+								
+								<th class="aplus-data-column top-header">
+									<div class="relative overflow-hidden group/media">
+										<a href="{{ url }}" tabindex="-1" data-instant aria-label="{{ card_product.title | default: 'Product' }}">
+											<div style="opacity:0" class="product-card-media media rounded-block [--aspect-ratio:--product-card-image-aspect] md:pb-6">
+												<lqip-element class="image-loader h-full">
+													<img src="https://cdn.shopify.com/s/files/1/0777/8339/files/51z90B1mVTL._AC_SY300_SX300_QL70_ML2.jpg?v=1775046681"
+														widths="360, 450, 540, 630, 720, 900, 1050, 1200, 1320, 1440" loading="lazy" width="" height=""
+														class="product-card__image product-thumbnail-shade"/>
+													</lqip-element>
+												</div>
+											</a>
+										</div>
+									</th>
+								</tr>
+								
+								{% for entry in selected_features %}{% endfor %}
+								<tr class="first-content-row">
+									<td class="attribute a-text-bold column-cell-1">
+										<div class="comparison-metric-name " data-position="triggerRight">
+											<span class="a-text-bold"> Comparison Point </span>
+										</div>
+									</td>
+									
+									{%- comment -%} Current product value {%- endcomment -%}
+									<td class="aplus-data-column active active-item second-sticky-column">RAE Anti-Aging Serum</td>
+									<td class="aplus-data-column secondary-content-column">Injectibles</td>
+									<td class="aplus-data-column secondary-content-column">Laser Treatments</td>
+									<td class="aplus-data-column secondary-content-column">Surgery</td>
+									
+									{%- comment -%} Compared products values {%- endcomment -%}
+									{% for cp in compare_products %}
+										{% unless cp.id == product.id %}
+											{% assign cp_compare_key = cp.metafields.custom.compare_key.value %}
+											{% if cp_compare_key == blank %}
+												{% assign cp_compare_key = cp.handle | replace: '-', '_' %}
+											{% endif %}
+											
+											{% assign cp_value = entry[cp_compare_key] | metafield_tag %}
+											<td class="aplus-data-column" style="min-width: 230px;">
+												{% if cp_value != blank %}
+													{{ cp_value.value | default: cp_value }}
+												{% else %}
+													—
+												{% endif %}
+											</td>
+										{% endunless %}
+									{% endfor %}									
+								</tr>
+								
+								<tr>   
+								<td class="attribute a-text-bold">
+									<div class="comparison-metric-name " data-position="triggerRight">
+										<span class="a-text-bold"> Daily Fit </span>
+									</div>
+								</td>
+								<td class="aplus-data-column active active-item second-sticky-column">
+									<span class="description">
+										Effortless daily routine
+									</span>
+								</td>      
+								<td class="aplus-data-column secondary-content-column">
+									<span class="description">
+										Clinic visit
+									</span>
+								</td>           
+								<td class="aplus-data-column secondary-content-column">
+									<span class="description">
+										Requires clinic visits
+									</span>
+								</td>
+								<td class="aplus-data-column secondary-content-column">
+									<span class="description">
+										Major Procedure
+									</span>
+								</td>      
+							</tr> 
+							
+							<tr>   
+							<td class="attribute a-text-bold">
+								<div class="comparison-metric-name " data-position="triggerRight">
+									<span class="a-text-bold"> Skin feel </span>
+								</div>
+							</td>
+							<td class="aplus-data-column active active-item second-sticky-column">
+								<span class="description">
+									Gentle, skin-first care
+								</span>
+							</td>      
+							<td class="aplus-data-column secondary-content-column">
+								<span class="description">
+									Needle-based
+								</span>
+							</td>           
+							<td class="aplus-data-column secondary-content-column">
+								<span class="description">
+									Heat/sensitivity
+								</span>
+							</td>
+							<td class="aplus-data-column secondary-content-column">
+								<span class="description">
+									Most invasive
+								</span>
+							</td>      
+							
+						</tr> 
+						
+						<tr>   
+						<td class="attribute a-text-bold">
+							<div class="comparison-metric-name " data-position="triggerRight">
+								<span class="a-text-bold"> Your time </span>
+							</div>
+						</td>
+						<td class="aplus-data-column active active-item second-sticky-column">
+							<span class="description">
+								No downtime
+							</span>
+						</td>      
+						<td class="aplus-data-column secondary-content-column">
+							<span class="description">
+								Repeat visits
+							</span>
+						</td>           
+						<td class="aplus-data-column secondary-content-column">
+							<span class="description">
+								Recovery + aftercare
+							</span>
+						</td>
+						<td class="aplus-data-column secondary-content-column">
+							<span class="description">
+								Weeks of recovery
+							</span>
+						</td>      
+						
+					</tr>
+					
+					<tr>  
+					<td class="attribute a-text-bold">
+						<div class="comparison-metric-name " data-position="triggerRight">
+							<span class="a-text-bold"> Your cost </span> 
+						</div>
+					</td>
+					<td class="aplus-data-column active active-item second-sticky-column">
+						<span class="description">$99/month</span>
+					</td>
+					<td class="aplus-data-column secondary-content-column">
+						<span class="description">$435+ per session</span>
+					</td>      
+					<td class="aplus-data-column secondary-content-column">
+						<span class="description">$1,829+ per session</span>
+					</td>
+					<td class="aplus-data-column secondary-content-column">
+						<span class="description">$11,395+</span>
+					</td> 
+					
+				</tr>
+				
+				
+				<tr>  
+				<td class="attribute a-text-bold">
+					<div class="comparison-metric-name " data-position="triggerRight">
+						<span class="a-text-bold">Commitment</span>
+					</div>
+				</td>      
+				<td class="aplus-data-column active active-item second-sticky-column">
+					<span class="description">Easy to stay consistent</span>
+				</td>      
+				<td class="aplus-data-column secondary-content-column">
+					<span class="description">Ongoing upkeep</span>
+				</td>      
+				<td class="aplus-data-column secondary-content-column">
+					<span class="description">Treatment series</span>
+				</td>
+				<td class="aplus-data-column secondary-content-column">
+					<span class="description">Biggest commitment</span>
+				</td> 
+			</tr> 
+		
+
+		</tbody>
+	</table>
+</div>
+</div>
+<div class="text-center">
+	<strong>Effortless Daily Anti-Aging Care that Fits into Your Routine - No Needles, No Clinic Visits</strong>
+</div> 
+</div>
+</div>
+</div>

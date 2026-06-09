@@ -1,0 +1,355 @@
+<style>
+    /* ===== PLAN SELECTOR ===== */
+    :root {
+  --rae-blue: #377F9A;
+  --rae-blue-dark: #2A6478;
+  --rae-sky: #97D3E9;
+  --rae-sky-soft: #82BFD6;
+  --rae-mist: #E9F7FC;
+  --rae-cloud: #EDEDED;
+  --rae-ink: #0F2A35;
+  --rae-charcoal: #2C4A56;
+  --rae-text: #4A6470;
+  --rae-white: #FFFFFF;
+  --rae-bg: #F8FBFD;
+  --shadow-soft: 0 8px 30px rgba(55, 127, 154, 0.08);
+  --shadow-card: 0 20px 60px rgba(55, 127, 154, 0.12);
+  --shadow-glow: 0 0 0 2px rgba(55, 127, 154, 0.2), 0 30px 80px rgba(55, 127, 154, 0.22);
+}
+.plan-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.plan {
+  background: var(--rae-white);
+  border: 1px solid var(--rae-cloud);
+  border-radius: 24px;
+  padding: 40px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.plan:not(.featured):hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--rae-sky);
+}
+.plan.featured {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(151, 211, 233, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, var(--rae-white) 0%, var(--rae-mist) 100%);
+  border: 2px solid var(--rae-blue);
+  box-shadow: var(--shadow-glow);
+  transform: scale(1.05);
+  z-index: 2;
+}
+.plan.featured:hover { transform: scale(1.05) translateY(-6px); }
+.plan-tag {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--rae-blue) 0%, var(--rae-ink) 100%);
+  color: var(--rae-white);
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 100px;
+  box-shadow: 0 8px 22px rgba(55, 127, 154, 0.4);
+  white-space: nowrap;
+}
+.plan-name {
+  font-size: 24px;
+  color: var(--rae-ink);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.plan-subtitle {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--rae-blue);
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+.plan-price .amount {
+  font-size: 24px;
+  color: var(--rae-ink);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+.plan-price .unit {
+  font-size: 14px;
+  color: var(--rae-charcoal);
+  font-weight: 500;
+}
+.plan-compare {
+  font-size: 13px;
+  color: var(--rae-text);
+  margin-bottom: 10px;
+}
+.plan-compare s { color: #b8c5cc; margin-right: 6px; }
+.plan-savings {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--rae-blue);
+  background: var(--rae-mist);
+  padding: 7px 14px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+.plan.featured .plan-savings {
+  background: var(--rae-blue);
+  color: var(--rae-white);
+  box-shadow: 0 4px 12px rgba(55, 127, 154, 0.3);
+}
+.plan-list {
+  list-style: none;
+  margin-bottom: 32px;
+  flex: 1;
+  padding-left: 0;
+}
+.plan-list li {
+  font-size: 14px;
+  color: var(--rae-charcoal);
+  padding: 8px 0;
+  padding-left: 32px;
+  position: relative;
+  border-bottom: 1px solid rgba(55, 127, 154, 0.08);
+  font-weight: 500;
+}
+.plan-list li:last-child { border-bottom: none; }
+.plan-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 18px;
+  height: 18px;
+  background: var(--rae-mist);
+  border-radius: 50%;
+  border: 1px solid rgba(55, 127, 154, 0.2);
+}
+.plan-list li::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 21px;
+  width: 6px;
+  height: 3px;
+  border-left: 1.5px solid var(--rae-blue);
+  border-bottom: 1.5px solid var(--rae-blue);
+  transform: rotate(-45deg);
+}
+.plan.featured .plan-list li::before {
+  background: var(--rae-blue);
+  border-color: var(--rae-blue);
+}
+.plan.featured .plan-list li::after {
+  border-color: var(--rae-white);
+}
+.plan-cta {
+  display: block;
+  width: 100%;
+  background: var(--rae-ink);
+  color: var(--rae-white);
+  border: none;
+  padding: 18px 20px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.plan.featured .plan-cta {
+  background: linear-gradient(135deg, var(--rae-blue) 0%, var(--rae-ink) 100%);
+  box-shadow: 0 12px 30px rgba(55, 127, 154, 0.35);
+}
+.plan-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(15, 42, 53, 0.25);
+}
+.plan-foot {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--rae-charcoal);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.plan-reassure {
+  margin-top: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 10px 5px;
+  background: var(--rae-bg);
+  border-radius: 16px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.reassure-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--rae-charcoal);
+  font-weight: 500;
+}
+.reassure-item svg { color: var(--rae-blue); }
+@media (max-width: 768px){
+    .plan-grid { grid-template-columns: 1fr; gap: 40px; }
+    .plan.featured { transform: scale(1); }
+    .plan.featured:hover { transform: translateY(-6px); }
+    .plan-reassure {
+      padding: 16px 0;
+    }
+}
+</style>
+
+  {% assign product = all_products['rae-anti-aging-serum'] %}
+  <div class="container">
+
+    <div class="plan-grid">
+      <!-- ONE-TIME -->
+      <div class="plan">
+        <div class="plan-name">One-Time Purchase</div>
+        <div class="plan-subtitle">First-Time Trial</div>
+        <div class="plan-price"><span class="amount">$99</span><span class="unit">.95</span></div>
+        <div class="plan-compare">Standard shipping rates apply</div>
+        <span class="plan-savings">Try the ritual</span>
+        <ul class="plan-list">
+          <li>1 bottle of Rae Anti-Aging Serum</li>
+          <li>Standard U.S. shipping</li>
+          <li>No commitment, no auto-renewal</li>
+          <li>30-day risk-free guarantee</li>
+        </ul>
+        
+        
+        <form action="{{ routes.cart_add_url }}">
+             <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+             <input type="hidden" name="quantity" value="1">
+             <input type="hidden" name="return_to" value="/checkout">
+            <button type="submit" class="plan-cta">Add to Cart</button>
+        </form>
+        <div class="plan-foot">Single purchase · No re-billing</div>
+      </div>
+
+      <!-- SUBSCRIBE FEATURED -->
+      <div class="plan featured">
+        <div class="plan-tag">★ Most Popular · Save 25%</div>
+        <div class="plan-name">Subscribe &amp; Save</div>
+        <div class="plan-subtitle">Best Long-Term Value</div>
+        <div class="plan-price"><span class="amount">$74</span><span class="unit">.96 / bottle</span></div>
+        <div class="plan-compare"><s>$99.95</s>You save $24.99 every delivery</div>
+        <span class="plan-savings">Save 25% + Free Shipping</span>
+        <ul class="plan-list">
+          <li>The lowest price we offer — guaranteed</li>
+          <li>Free U.S. shipping on every delivery</li>
+          <li>Skip, swap, or pause anytime</li>
+          <li>Cancel in one click — no fees, ever</li>
+          <li>Member-only restock alerts &amp; perks</li>
+        </ul>
+
+        <form action="{{ routes.cart_add_url }}">
+             <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+             <input type="hidden" name="quantity" value="1">
+             <input type="hidden" name="return_to" value="/checkout">
+             {% assign first_variant = product.variants.first %}
+
+            {% if first_variant.selling_plan_allocations.size > 0 %}
+                <!-- Show dropdown for available selling plans -->
+                <select name="selling_plan" style="display: none;">
+                {% for allocation in first_variant.selling_plan_allocations %}
+                    <option value="{{ allocation.selling_plan.id }}">
+                    {{ allocation.selling_plan.name }}
+                    </option>
+                {% endfor %}
+                </select>
+            {% endif %}
+            <button type="submit" class="plan-cta">Start My Subscription →</button>
+        </form>
+        
+        <div class="plan-foot">Most chosen by our community</div>
+      </div>
+
+      <!-- PACK OF 2 -->
+      <div class="plan">
+        <div class="plan-name">Pack of 2</div>
+        <div class="plan-subtitle">Stock Up &amp; Share</div>
+        <div class="plan-price"><span class="amount">$169</span><span class="unit">.92</span></div>
+        <div class="plan-compare" data-price="{{ product.price | times: 2  | money }}"><s>{{ product.price | times: 2  | money }}</s>You save $29.98 today</div>
+        <span class="plan-savings">Save 15% + Free Shipping</span>
+        <ul class="plan-list">
+          <li>2 bottles · roughly 4 months of ritual</li>
+          <li>Free U.S. shipping</li>
+          <li>Perfect for gifting or sharing</li>
+          <li>One-time payment, no auto-renew</li>
+        </ul>
+        <form action="{{ routes.cart_add_url }}">
+             <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+             <input type="hidden" name="quantity" value="2">
+             <input type="hidden" name="return_to" value="/checkout">
+            <button type="submit" class="plan-cta">Add Pack of 2</button>
+        </form>
+        <div class="plan-foot">Ideal for committed routines</div>
+      </div>
+    </div>
+
+    <div class="plan-reassure">
+      <div class="reassure-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        Cancel Anytime · No Fees
+      </div>
+      <div class="reassure-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        Skip or Pause in One Click
+      </div>
+      <div class="reassure-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        30-Day Risk-Free Guarantee
+      </div>
+      <div class="reassure-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        Secure Checkout
+      </div>
+    </div>
+  </div>
+
+{% schema %} 
+{
+    "name" : "Purchase Plans",
+    "tag": null,
+    "settings": [],
+
+    "presets": [
+        {
+            "name" : "Purchase Plans",
+            "category" : "Custom Block"
+        }
+    ]
+}
+{% endschema %} 

@@ -1,0 +1,69 @@
+{{ 'overflow-list.css' | asset_url | preload_tag: as: 'style' }}
+{{ 'base.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'custom-font.css' | asset_url | stylesheet_tag: preload: true }}
+
+{% if request.page_type == 'index' %}
+    {{ 'homepage.css' | asset_url | preload_tag: as: 'style' }}
+    <link rel="stylesheet"
+        href="{{ 'homepage.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'">
+    <noscript>
+    {{ 'homepage.css' | asset_url | stylesheet_tag }}
+    </noscript>
+{% endif %}
+
+{% if request.page_type 'product' %}
+    {{ 'product-page.css' | asset_url | preload_tag: as: 'style' }}
+    <link rel="stylesheet"
+        href="{{ 'product-page.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'">
+    <noscript>
+    {{ 'product-page.css' | asset_url | stylesheet_tag }}
+    </noscript>
+{% endif %}
+
+{% if template.suffix contains 'contact' %}
+    {{ 'contact-page.css' | asset_url | preload_tag: as: 'style' }}
+    <link rel="stylesheet"
+        href="{{ 'contact-page.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'">
+    <noscript>
+    {{ 'contact-page.css' | asset_url | stylesheet_tag }}
+    </noscript>
+{% endif %}
+
+{% if template.suffix contains 'science' %}
+    {{ 'science-page.css' | asset_url | preload_tag: as: 'style' }}
+    <link rel="stylesheet"
+        href="{{ 'science-page.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'">
+    <noscript>
+    {{ 'science-page.css' | asset_url | stylesheet_tag }}
+    </noscript>
+{% endif %}
+
+{% if template.suffix contains 'about' %}
+    {{ 'about-page.css' | asset_url | preload_tag: as: 'style' }}
+    <link rel="stylesheet"
+        href="{{ 'about-page.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'">
+    <noscript>
+    {{ 'about-page.css' | asset_url | stylesheet_tag }}
+    </noscript>
+{% endif %}
+
+{% if template.suffix contains 'subscribe' %}
+    {{ 'subscribe-page.css' | asset_url | preload_tag: as: 'style' }}
+    <link rel="stylesheet"
+        href="{{ 'subscribe-page.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'">
+    <noscript>
+    {{ 'subscribe-page.css' | asset_url | stylesheet_tag }}
+    </noscript>
+{% endif %}

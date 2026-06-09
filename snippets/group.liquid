@@ -1,0 +1,124 @@
+{%- doc -%}
+  Renders block content for all blocks that extend the group block.
+
+  @param {string} children - The DOM content of the group block.
+  @param {object} settings - The settings of the group block.
+  @param {string} shopify_attributes - String with Shopify attributes for the editor.
+  @param {string} [class] - Custom classes for the group block.
+  @param {string} [style] - Custom inline styles for the group block.
+
+  @example
+  {% render 'group', children: children, settings: block.settings, shopify_attributes: block.shopify_attributes %}
+{%- enddoc -%}
+
+{%- liquid
+  assign group_mobile_styles = ''
+  if settings.horizontal_alignment_mobile != 'default' and settings.horizontal_alignment_mobile != blank
+    assign group_mobile_styles = group_mobile_styles | append: '--group-mobile-h-align:' | append: settings.horizontal_alignment_mobile | append: ';'
+  endif
+  if settings.vertical_alignment_mobile != 'default' and settings.vertical_alignment_mobile != blank
+    assign group_mobile_styles = group_mobile_styles | append: '--group-mobile-v-align:' | append: settings.vertical_alignment_mobile | append: ';'
+  endif
+-%}
+
+<div
+  class="
+    group-block
+    group-block--height-{{ settings.height }}
+    group-block--width-{{ settings.width }}
+    border-style
+    spacing-style
+    size-style
+    {% if settings.inherit_color_scheme == false %} color-{{ settings.color_scheme }}{% endif %}
+    {{ class }} {{ settings.custom_class }}
+  "
+  style="
+    {% render 'border-override', settings: settings %}
+    {% render 'spacing-style', settings: settings %}
+    {% render 'size-style', settings: settings %}
+    {{ style }}
+    {{ group_mobile_styles }}
+  "
+  {{ shopify_attributes }}
+  data-testid="group-block"
+>
+  {%- if settings.link != blank -%}
+    <a
+      href="{{ settings.link }}"
+      class="group-block__link"
+      {% if settings.open_in_new_tab %}
+        target="_blank" rel="noopener"
+      {% endif %}
+    ></a>
+  {%- endif -%}
+
+  <div class="group-block__media-wrapper">
+    {% render 'background-media',
+      background_media: settings.background_media,
+      background_video: settings.video,
+      background_video_position: settings.video_position,
+      background_image: settings.background_image,
+      background_image_position: settings.background_image_position,
+      placeholder: settings.placeholder
+    %}
+    {% if settings.toggle_overlay %}
+      {% render 'overlay', settings: settings, layer: '0' %}
+    {% endif %}
+  </div>
+
+  <div
+    class="
+      group-block-content
+      {% if request.design_mode %}group-block-content--design-mode{% endif %}
+      layout-panel-flex
+      layout-panel-flex--{{ settings.content_direction | default: 'column' }}
+      {% if settings.vertical_on_mobile %} mobile-column{% endif %}
+      {% if settings.content_direction_mobile != 'default' and settings.content_direction_mobile != blank %}group-mobile-{{ settings.content_direction_mobile }}{% endif %}
+    "
+    style="{% render 'layout-panel-style', settings: settings %}{{ group_mobile_styles }}"
+  >
+    {{- children -}}
+  </div>
+</div>
+
+{% stylesheet %}
+  .group-block__link {
+    position: absolute;
+    inset: 0;
+  }
+
+  .group-block__link ~ :is(.group-block-content, .group-block__media-wrapper) {
+    pointer-events: none;
+
+    :is(a, button, input, textarea, select) {
+      pointer-events: auto;
+    }
+  }
+
+  /* Needs the .group-block__link ~ to be specific enough to take effect. */
+  .group-block__link ~ .group-block-content--design-mode {
+    pointer-events: auto;
+  }
+
+  /* Mobile layout overrides */
+  @media screen and (max-width: 749px) {
+    .group-block[style*='--group-mobile-v-align'] {
+      flex: 1;
+    }
+
+    .group-block .group-block-content.group-mobile-column {
+      flex-flow: column nowrap;
+    }
+
+    .group-block .group-block-content.group-mobile-row {
+      flex-flow: row wrap;
+      justify-content: var(--group-mobile-h-align, var(--horizontal-alignment));
+      align-items: var(--group-mobile-v-align, var(--vertical-alignment));
+    }
+
+    .group-block .group-block-content:not(.group-mobile-row) {
+      align-items: var(--group-mobile-h-align, var(--horizontal-alignment));
+      justify-content: var(--group-mobile-v-align, var(--vertical-alignment));
+    }
+  }
+{% endstylesheet %}

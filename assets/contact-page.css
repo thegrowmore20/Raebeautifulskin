@@ -1,0 +1,9 @@
+.contact-email-block img {
+  filter: invert(1);
+}
+
+@media screen and (max-width: 480px){
+    .social-contact-group > .mobile-column {
+        align-items: center !important;
+    }
+}

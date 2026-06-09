@@ -1,0 +1,8 @@
+@media screen and (max-width: 1199px) {
+    .visible-results-section .section-content-wrapper {
+        flex-flow: column nowrap;
+    }
+    .visible-results-section .group-block--width-custom.size-style {
+        width: 100%;
+    }
+}
